@@ -1,5 +1,5 @@
 import { QuantumNav } from "@/components/FutureComplete/QuantumNav"
-import { QuantumHero } from "@/components/FutureComplete/QuantumHero"
+import { Quantum4DHero } from "@/components/FutureComplete/Quantum4DHero"
 import { QuantumServices } from "@/components/FutureComplete/QuantumServices"
 import { QuantumContact } from "@/components/FutureComplete/QuantumContact"
 
@@ -9,7 +9,7 @@ export default function Home() {
       <QuantumNav />
       <main className="relative bg-white">
         <div id="origin">
-          <QuantumHero />
+          <Quantum4DHero />
         </div>
         <div id="services">
           <QuantumServices />

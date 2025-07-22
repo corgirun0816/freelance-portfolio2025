@@ -24,7 +24,7 @@ const navigationNodes: NavNode[] = [
     id: "services",
     label: "SERVICES",
     position: { x: -100, y: 50, z: 20 },
-    connections: ["origin", "neural", "reality", "quantum", "thought"],
+    connections: ["origin", "personal-training", "web-design", "app-development", "seo-writing"],
     dimension: "Service Space"
   },
   {
@@ -42,32 +42,32 @@ const navigationNodes: NavNode[] = [
     dimension: "Meta Reality"
   },
   {
-    id: "neural",
-    label: "NEURAL FITNESS",
+    id: "personal-training",
+    label: "パーソナルトレーニング",
     position: { x: -150, y: 100, z: 30 },
     connections: ["services"],
-    dimension: "Training Dimension"
+    dimension: "4D Training Space"
   },
   {
-    id: "reality",
-    label: "REALITY DESIGN",
+    id: "web-design",
+    label: "WEBデザイン",
     position: { x: -150, y: 0, z: 40 },
     connections: ["services"],
-    dimension: "Creation Space"
+    dimension: "Design Timeline"
   },
   {
-    id: "quantum",
-    label: "QUANTUM DEV",
+    id: "app-development",
+    label: "アプリ開発",
     position: { x: -100, y: -100, z: 20 },
     connections: ["services"],
-    dimension: "Development Void"
+    dimension: "Development Continuum"
   },
   {
-    id: "thought",
-    label: "THOUGHT SYNTHESIS",
+    id: "seo-writing",
+    label: "SEOライティング",
     position: { x: -50, y: 150, z: 60 },
     connections: ["services"],
-    dimension: "Linguistic Plane"
+    dimension: "Content Dimension"
   }
 ]
 
@@ -150,7 +150,7 @@ export function QuantumNav() {
             <div className="h-full flex flex-col p-10">
               <div className="mb-8">
                 <h2 className="text-4xl font-thin text-gray-300 tracking-[0.3em] mb-4">
-                  QUANTUM NAVIGATION
+                  4D NAVIGATION
                 </h2>
                 <div className="flex items-center space-x-6">
                   <div>

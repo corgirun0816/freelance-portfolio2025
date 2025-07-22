@@ -9,71 +9,71 @@ import { LiquidGlass } from '../LiquidGlass'
 
 const services = [
   {
-    id: "NEURAL_TRAINING",
-    title: "Neural Fitness",
-    subtitle: "Mind-Body Quantum Integration",
-    description: "Direct neural pathway optimization for instant skill acquisition and physical enhancement",
+    id: "PERSONAL_TRAINING",
+    title: "パーソナルトレーニング",
+    subtitle: "4D Body-Mind Synchronization",
+    description: "時間軸を含む4次元空間での身体と意識の完全同期トレーニング。過去・現在・未来の自分と同時にトレーニング",
     features: [
-      "Synaptic Pattern Recognition",
-      "Quantum Body Mechanics",
-      "Consciousness Expansion",
-      "Time-Dilated Training"
+      "時間軸トレーニング",
+      "4D筋肉記憶形成",
+      "量子身体最適化",
+      "時空間フィットネス"
     ],
     metrics: {
-      efficiency: "99.7%",
-      integration: "Level 9",
-      evolution: "Continuous"
+      dimensions: "4D",
+      timeline: "Past-Present-Future",
+      efficiency: "∞%"
     }
   },
   {
-    id: "REALITY_DESIGN",
-    title: "Reality Architecture",
-    subtitle: "Multidimensional Experience Design",
-    description: "Create experiences that transcend physical limitations through quantum reality manipulation",
+    id: "WEB_DESIGN",
+    title: "WEBデザイン",
+    subtitle: "4th Dimensional Web Experience",
+    description: "時間を第4の次元として活用した、過去・現在・未来が共存するウェブ体験設計",
     features: [
-      "Dimensional Layering",
-      "Consciousness Mapping",
-      "Quantum State Design",
-      "Neural Interface UX"
+      "時間軸UI/UX",
+      "4Dインタラクション",
+      "時空間ナビゲーション",
+      "量子状態デザイン"
     ],
     metrics: {
-      dimensions: "11D",
-      perception: "Omniscient",
-      creation: "Instantaneous"
+      dimensions: "4D",
+      temporal_flow: "Non-linear",
+      experience: "Omnipresent"
     }
   },
   {
-    id: "QUANTUM_DEV",
-    title: "Quantum Development",
-    subtitle: "Probabilistic Application Engineering",
-    description: "Applications that exist in superposition, adapting to user consciousness in real-time",
+    id: "APP_DEVELOPMENT",
+    title: "アプリ開発",
+    subtitle: "Temporal Application Engineering",
+    description: "時間軸を自在に操作し、ユーザーの過去・現在・未来のニーズに同時対応するアプリケーション開発",
     features: [
-      "Quantum Algorithms",
-      "Consciousness APIs",
-      "Reality Manipulation SDK",
-      "Neural Compilation"
+      "4Dアルゴリズム",
+      "時間並列処理",
+      "未来予測API",
+      "過去改変SDK"
     ],
     metrics: {
-      qubits: "∞",
-      coherence: "Stable",
-      entanglement: "Universal"
+      processing: "4D Parallel",
+      timeline: "Malleable",
+      causality: "Flexible"
     }
   },
   {
-    id: "THOUGHT_WRITING",
-    title: "Thought Synthesis",
-    subtitle: "Direct Neural Content Generation",
-    description: "Pure thought-to-reality content creation bypassing traditional language constraints",
+    id: "SEO_WRITING",
+    title: "SEOライティング",
+    subtitle: "Temporal Content Optimization",
+    description: "過去・現在・未来の検索意図を同時に満たす、時間を超越したコンテンツ最適化",
     features: [
-      "Telepathic Composition",
-      "Emotion Encoding",
-      "Quantum Linguistics",
-      "Universal Translation"
+      "時間軸SEO",
+      "4D検索最適化",
+      "未来キーワード予測",
+      "時空間コンテンツ"
     ],
     metrics: {
-      bandwidth: "1 PB/s",
-      languages: "All",
-      dimensions: "Beyond"
+      reach: "All Timelines",
+      relevance: "Eternal",
+      ranking: "4D Optimized"
     }
   }
 ]
