@@ -18,16 +18,20 @@ export function HeroSection() {
   return (
     <section ref={ref} className="relative min-h-screen flex items-center">
       <motion.div className="w-full px-4 md:px-8 py-32" style={{ y, opacity }}>
-        <div className="flex flex-col items-center justify-center">
-          <motion.h1 
-            className="text-6xl md:text-9xl font-thin tracking-[0.3em] text-gray-800 text-center"
-            initial={{ letterSpacing: "0.5em", opacity: 0 }}
-            animate={{ letterSpacing: "0.3em", opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            S.STUDIO
-          </motion.h1>
-        </div>
+        <GridContainer gap={1}>
+          <GridItem span={12}>
+            <LiquidGlass className="p-12 md:p-20">
+              <motion.h1 
+                className="text-6xl md:text-9xl font-thin tracking-[0.3em] text-gray-800 text-center"
+                initial={{ letterSpacing: "0.5em", opacity: 0 }}
+                animate={{ letterSpacing: "0.3em", opacity: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+              >
+                S.STUDIO
+              </motion.h1>
+            </LiquidGlass>
+          </GridItem>
+        </GridContainer>
       </motion.div>
 
       <motion.div
