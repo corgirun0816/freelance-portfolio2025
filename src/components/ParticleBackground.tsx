@@ -26,40 +26,40 @@ export function ParticleBackground() {
       vy: number
       radius: number
 
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+      constructor(canvasWidth: number, canvasHeight: number) {
+        this.x = Math.random() * canvasWidth
+        this.y = Math.random() * canvasHeight
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
         this.radius = Math.random() * 2 + 1
       }
 
-      update() {
+      update(canvasWidth: number, canvasHeight: number) {
         this.x += this.vx
         this.y += this.vy
 
-        if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx
-        if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy
+        if (this.x < 0 || this.x > canvasWidth) this.vx = -this.vx
+        if (this.y < 0 || this.y > canvasHeight) this.vy = -this.vy
       }
 
-      draw() {
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(148, 163, 184, 0.5)"
-        ctx.fill()
+      draw(context: CanvasRenderingContext2D) {
+        context.beginPath()
+        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        context.fillStyle = "rgba(148, 163, 184, 0.5)"
+        context.fill()
       }
     }
 
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle())
+      particles.push(new Particle(canvas.width, canvas.height))
     }
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       particles.forEach((particle) => {
-        particle.update()
-        particle.draw()
+        particle.update(canvas.width, canvas.height)
+        particle.draw(ctx)
       })
 
       particles.forEach((particleA, indexA) => {
