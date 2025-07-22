@@ -13,7 +13,7 @@ export function Footer() {
             <LiquidGlass className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                  <h3 className="text-xl font-light tracking-[0.2em] text-gray-800 mb-4">S.STUDIO</h3>
+                  <h3 className="text-xl font-light tracking-[0.2em] text-gray-500 mb-4">S.STUDIO</h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
                     プロフェッショナルなサービスで<br />
                     あなたのビジネスを成功に導きます
@@ -21,25 +21,25 @@ export function Footer() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm tracking-[0.2em] text-gray-700 mb-4">SERVICES</h4>
+                  <h4 className="text-sm tracking-[0.2em] text-gray-500 mb-4">SERVICES</h4>
                   <ul className="space-y-2 text-sm">
                     <li>
-                      <Link href="/services/personal-training" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/services/personal-training" className="text-gray-600 hover:text-gray-600 transition-colors">
                         Personal Training
                       </Link>
                     </li>
                     <li>
-                      <Link href="/services/web-design" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/services/web-design" className="text-gray-600 hover:text-gray-600 transition-colors">
                         Web Design
                       </Link>
                     </li>
                     <li>
-                      <Link href="/services/seo-writing" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/services/seo-writing" className="text-gray-600 hover:text-gray-600 transition-colors">
                         SEO Writing
                       </Link>
                     </li>
                     <li>
-                      <Link href="/services/app-development" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/services/app-development" className="text-gray-600 hover:text-gray-600 transition-colors">
                         App Development
                       </Link>
                     </li>
@@ -47,20 +47,20 @@ export function Footer() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm tracking-[0.2em] text-gray-700 mb-4">LINKS</h4>
+                  <h4 className="text-sm tracking-[0.2em] text-gray-500 mb-4">LINKS</h4>
                   <ul className="space-y-2 text-sm">
                     <li>
-                      <Link href="/about" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/about" className="text-gray-600 hover:text-gray-600 transition-colors">
                         About
                       </Link>
                     </li>
                     <li>
-                      <Link href="/contact" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/contact" className="text-gray-600 hover:text-gray-600 transition-colors">
                         Contact
                       </Link>
                     </li>
                     <li>
-                      <Link href="/privacy" className="text-gray-600 hover:text-gray-800 transition-colors">
+                      <Link href="/privacy" className="text-gray-600 hover:text-gray-600 transition-colors">
                         Privacy Policy
                       </Link>
                     </li>
@@ -68,7 +68,7 @@ export function Footer() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm tracking-[0.2em] text-gray-700 mb-4">CONTACT</h4>
+                  <h4 className="text-sm tracking-[0.2em] text-gray-500 mb-4">CONTACT</h4>
                   <div className="space-y-2 text-sm text-gray-600">
                     <p>info@s-studio.com</p>
                     <p>+81 90-1234-5678</p>

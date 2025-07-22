@@ -22,7 +22,7 @@ export function HeroSection() {
           <GridItem span={12}>
             <LiquidGlass className="p-12 md:p-20">
               <motion.h1 
-                className="text-6xl md:text-9xl font-thin tracking-[0.3em] text-gray-800 text-center"
+                className="text-6xl md:text-9xl font-thin tracking-[0.3em] text-gray-500 text-center"
                 initial={{ letterSpacing: "0.5em", opacity: 0 }}
                 animate={{ letterSpacing: "0.3em", opacity: 1 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
@@ -39,7 +39,7 @@ export function HeroSection() {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-px h-16 bg-gray-300" />
+        <div className="w-px h-16 bg-gray-400" />
       </motion.div>
     </section>
   )

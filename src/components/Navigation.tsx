@@ -44,7 +44,7 @@ export function Navigation() {
         <div className="grid grid-cols-12 gap-1 py-4">
           <div className="col-span-3">
             <LiquidGlass className="h-12 flex items-center px-4">
-              <Link href="/" className="text-xl font-light tracking-[0.2em] text-gray-800">
+              <Link href="/" className="text-xl font-light tracking-[0.2em] text-gray-500">
                 S.STUDIO
               </Link>
             </LiquidGlass>
@@ -56,7 +56,7 @@ export function Navigation() {
                 <LiquidGlass key={item.name} delay={index * 0.1}>
                   <Link
                     href={item.href}
-                    className="h-12 flex items-center justify-center text-xs tracking-widest text-gray-600 hover:text-gray-800 transition-colors px-2"
+                    className="h-12 flex items-center justify-center text-xs tracking-widest text-gray-600 hover:text-gray-600 transition-colors px-2"
                   >
                     {item.name}
                   </Link>

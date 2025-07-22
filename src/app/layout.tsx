@@ -1,6 +1,13 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { PageTransitionProvider } from "@/components/PageTransitionProvider"
+
+const inter = Inter({ 
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  variable: "--font-inter"
+})
 
 export const metadata: Metadata = {
   title: "S.STUDIO - Creative Digital Solutions",
@@ -14,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="min-h-screen bg-white text-gray-800 antialiased">
+      <body className={`${inter.variable} font-sans min-h-screen bg-white text-gray-600 antialiased`}>
         <PageTransitionProvider>
           {children}
         </PageTransitionProvider>

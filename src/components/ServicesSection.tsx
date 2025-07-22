@@ -52,7 +52,7 @@ export function ServicesSection() {
         <GridContainer gap={1}>
           <GridItem span={12} className="mb-16">
             <LiquidGlass className="p-8">
-              <h2 className="text-4xl md:text-6xl font-thin tracking-[0.2em] text-gray-800 text-center">
+              <h2 className="text-4xl md:text-6xl font-thin tracking-[0.2em] text-gray-500 text-center">
                 SERVICES
               </h2>
             </LiquidGlass>
@@ -71,7 +71,7 @@ export function ServicesSection() {
                         <h3 className="text-sm tracking-[0.2em] text-gray-600 mb-2">
                           {service.title}
                         </h3>
-                        <p className="text-lg text-gray-800">
+                        <p className="text-lg text-gray-500">
                           {service.subtitle}
                         </p>
                       </div>

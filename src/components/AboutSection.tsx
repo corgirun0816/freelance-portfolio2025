@@ -24,7 +24,7 @@ export function AboutSection() {
         <GridContainer gap={1}>
           <GridItem span={12} className="mb-8">
             <LiquidGlass className="p-8">
-              <h2 className="text-4xl md:text-6xl font-thin tracking-[0.2em] text-gray-800 text-center">
+              <h2 className="text-4xl md:text-6xl font-thin tracking-[0.2em] text-gray-500 text-center">
                 ABOUT
               </h2>
             </LiquidGlass>
@@ -34,7 +34,7 @@ export function AboutSection() {
             <GridContainer gap={1}>
               <GridItem span={12} className="md:col-span-8">
                 <LiquidGlass className="p-8 md:p-12 h-full">
-                  <h3 className="text-2xl font-light tracking-wider text-gray-800 mb-6">
+                  <h3 className="text-2xl font-light tracking-wider text-gray-500 mb-6">
                     DIGITAL EXCELLENCE
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-4">
@@ -64,7 +64,7 @@ export function AboutSection() {
                       transition={{ delay: 0.3 + index * 0.1 }}
                     >
                       <LiquidGlass className="p-6 h-full flex flex-col justify-center items-center">
-                        <p className="text-3xl font-thin text-gray-800">{stat.value}</p>
+                        <p className="text-3xl font-thin text-gray-500">{stat.value}</p>
                         <p className="text-xs tracking-wider text-gray-600 mt-2">{stat.label}</p>
                       </LiquidGlass>
                     </motion.div>
