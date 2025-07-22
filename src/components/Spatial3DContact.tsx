@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Text, Box, Sphere, PerspectiveCamera } from '@react-three/drei'
+import { Text, Box, Sphere, PerspectiveCamera, Float } from '@react-three/drei'
 import * as THREE from 'three'
 import { LiquidGlass } from './LiquidGlass'
 
@@ -172,12 +172,10 @@ export function Spatial3DContact() {
         <pointLight position={[10, 10, 10]} intensity={0.5} />
         <pointLight position={[-10, 10, 10]} intensity={0.3} />
         
-        <motion.group
-          position-z={z}
-        >
+        <group>
           <ContactForm3D />
           <FloatingOrbs />
-        </motion.group>
+        </group>
         
         <mesh position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[20, 20, 1, 1]} />
