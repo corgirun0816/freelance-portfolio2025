@@ -1,21 +1,17 @@
 import { Navigation } from "@/components/Navigation"
 import { HeroSection } from "@/components/HeroSection"
-import { ServicesSection } from "@/components/ServicesSection"
-import { AboutSection } from "@/components/AboutSection"
+import { ServiceSections } from "@/components/ServiceSections"
 import { Footer } from "@/components/Footer"
-import { ThreeBackground } from "@/components/ThreeBackground"
+import { InteractiveThreeBackground } from "@/components/InteractiveThreeBackground"
 
 export default function Home() {
   return (
     <>
-      <ThreeBackground />
+      <InteractiveThreeBackground />
       <Navigation />
       <main>
         <HeroSection />
-        <div id="services">
-          <ServicesSection />
-        </div>
-        <AboutSection />
+        <ServiceSections />
       </main>
       <Footer />
     </>

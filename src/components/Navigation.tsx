@@ -33,12 +33,10 @@ export function Navigation() {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      {isScrolled && (
-        <motion.div 
-          className="absolute inset-0 bg-white/80 backdrop-blur-2xl"
-          style={{ opacity }}
-        />
-      )}
+      <motion.div 
+        className="absolute inset-0 bg-white/60 backdrop-blur-xl"
+        style={{ opacity: isScrolled ? opacity : 0 }}
+      />
       
       <div className="relative z-10 px-4 md:px-8">
         <div className="grid grid-cols-12 gap-1 py-4">
