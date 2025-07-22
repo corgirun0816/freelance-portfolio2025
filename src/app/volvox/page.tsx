@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/Navigation"
+import { PhysicsNav } from "@/components/PhysicsNav"
 import { VolvoxHero } from "@/components/VolvoxHero"
 import { VolvoxServices } from "@/components/VolvoxServices"
 import { Footer } from "@/components/Footer"
@@ -8,7 +8,7 @@ export default function VolvoxPage() {
   return (
     <>
       <VolvoxBackground />
-      <Navigation />
+      <PhysicsNav />
       <main>
         <VolvoxHero />
         <VolvoxServices />

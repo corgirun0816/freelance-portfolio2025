@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/Navigation"
+import { PhysicsNav } from "@/components/PhysicsNav"
 import { Footer } from "@/components/Footer"
 import { Search, Check } from "lucide-react"
 import Link from "next/link"
@@ -15,7 +15,7 @@ const features = [
 export default function SEOWritingPage() {
   return (
     <>
-      <Navigation />
+      <PhysicsNav />
       <main className="pt-16">
         <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">

@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/Navigation"
+import { PhysicsNav } from "@/components/PhysicsNav"
 import { Footer } from "@/components/Footer"
 import { motion } from "framer-motion"
 import { Dumbbell, Check } from "lucide-react"
@@ -16,7 +16,7 @@ const features = [
 export default function PersonalTrainingPage() {
   return (
     <>
-      <Navigation />
+      <PhysicsNav />
       <main className="pt-16">
         <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">
