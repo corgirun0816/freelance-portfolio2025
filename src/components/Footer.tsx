@@ -1,92 +1,92 @@
+"use client"
+
 import Link from "next/link"
-import { Mail, Phone, MapPin } from "lucide-react"
+import { GridContainer, GridItem } from "./GridContainer"
+import { LiquidGlass } from "./LiquidGlass"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-gray-300">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-white">S.STUDIO</h3>
-            <p className="text-sm">
-              プロフェッショナルなサービスであなたのビジネスを成功に導きます。
-            </p>
-          </div>
+    <footer className="bg-gray-50 py-16">
+      <div className="px-4 md:px-8">
+        <GridContainer gap={1}>
+          <GridItem span={12} className="mb-8">
+            <LiquidGlass className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                  <h3 className="text-xl font-light tracking-[0.2em] text-gray-800 mb-4">S.STUDIO</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    プロフェッショナルなサービスで<br />
+                    あなたのビジネスを成功に導きます
+                  </p>
+                </div>
 
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/services/personal-training" className="hover:text-white transition-colors">
-                  パーソナルトレーニング
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/web-design" className="hover:text-white transition-colors">
-                  WEBデザイン
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/seo-writing" className="hover:text-white transition-colors">
-                  SEOライティング
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/app-development" className="hover:text-white transition-colors">
-                  アプリケーション開発
-                </Link>
-              </li>
-            </ul>
-          </div>
+                <div>
+                  <h4 className="text-sm tracking-[0.2em] text-gray-700 mb-4">SERVICES</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link href="/services/personal-training" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        Personal Training
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/web-design" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        Web Design
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/seo-writing" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        SEO Writing
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/services/app-development" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        App Development
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
 
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
+                <div>
+                  <h4 className="text-sm tracking-[0.2em] text-gray-700 mb-4">LINKS</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li>
+                      <Link href="/about" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        About
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/contact" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        Contact
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/privacy" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        Privacy Policy
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
 
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white">Contact</h4>
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center space-x-2">
-                <Mail size={16} />
-                <span>info@freelance.com</span>
+                <div>
+                  <h4 className="text-sm tracking-[0.2em] text-gray-700 mb-4">CONTACT</h4>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <p>info@s-studio.com</p>
+                    <p>+81 90-1234-5678</p>
+                    <p>Tokyo, Japan</p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone size={16} />
-                <span>+81 90-1234-5678</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin size={16} />
-                <span>Tokyo, Japan</span>
-              </div>
-            </div>
-          </div>
-        </div>
+            </LiquidGlass>
+          </GridItem>
 
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
-          <p>&copy; 2024 S.STUDIO. All rights reserved.</p>
-        </div>
+          <GridItem span={12}>
+            <LiquidGlass className="p-4">
+              <p className="text-center text-sm text-gray-600 tracking-wider">
+                © 2024 S.STUDIO. ALL RIGHTS RESERVED.
+              </p>
+            </LiquidGlass>
+          </GridItem>
+        </GridContainer>
       </div>
     </footer>
   )

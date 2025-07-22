@@ -1,20 +1,21 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { LiquidGlass } from "./LiquidGlass"
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/#services" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "HOME", href: "/" },
+  { name: "SERVICES", href: "/#services" },
+  { name: "ABOUT", href: "/about" },
+  { name: "CONTACT", href: "/contact" },
 ]
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { scrollY } = useScroll()
+  const opacity = useTransform(scrollY, [0, 100], [0, 1])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,58 +30,41 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-lg shadow-lg" : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-black text-gray-800 tracking-tight">
-            S.STUDIO
-          </Link>
-
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-gray-800 transition-colors font-medium"
-              >
-                {item.name}
+      {isScrolled && (
+        <motion.div 
+          className="absolute inset-0 bg-white/80 backdrop-blur-2xl"
+          style={{ opacity }}
+        />
+      )}
+      
+      <div className="relative z-10 px-4 md:px-8">
+        <div className="grid grid-cols-12 gap-1 py-4">
+          <div className="col-span-3">
+            <LiquidGlass className="h-12 flex items-center px-4">
+              <Link href="/" className="text-xl font-light tracking-[0.2em] text-gray-800">
+                S.STUDIO
               </Link>
-            ))}
+            </LiquidGlass>
           </div>
-
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-gray-800"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          
+          <div className="col-span-9">
+            <div className="grid grid-cols-4 gap-1 h-12">
+              {navItems.map((item, index) => (
+                <LiquidGlass key={item.name} delay={index * 0.1}>
+                  <Link
+                    href={item.href}
+                    className="h-12 flex items-center justify-center text-sm tracking-widest text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </LiquidGlass>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white border-t border-gray-100"
-        >
-          <div className="container mx-auto px-4 py-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-2 text-gray-700 hover:text-gray-800 transition-colors font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-      )}
     </motion.nav>
   )
 }
