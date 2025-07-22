@@ -26,18 +26,6 @@ const pageVariants = {
   },
 }
 
-const overlayVariants = {
-  initial: { scaleX: 0 },
-  animate: {
-    scaleX: [0, 1, 1, 0],
-    transition: {
-      duration: 1.2,
-      times: [0, 0.5, 0.5, 1],
-      ease: [0.76, 0, 0.24, 1],
-    },
-  },
-  exit: { scaleX: 0 },
-}
 
 export function PageTransitionProvider({ children }: PageTransitionProviderProps) {
   const pathname = usePathname()
@@ -48,10 +36,16 @@ export function PageTransitionProvider({ children }: PageTransitionProviderProps
         <motion.div key={pathname + "-overlay"} className="fixed inset-0 z-50 pointer-events-none">
           <motion.div
             className="absolute inset-0 bg-gray-200 origin-left"
-            variants={overlayVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ scaleX: 0 }}
+            animate={{ 
+              scaleX: [0, 1, 1, 0],
+              transition: {
+                duration: 1.2,
+                times: [0, 0.5, 0.5, 1],
+                ease: "easeInOut",
+              },
+            }}
+            exit={{ scaleX: 0 }}
           />
         </motion.div>
       </AnimatePresence>
