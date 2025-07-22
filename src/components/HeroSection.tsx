@@ -1,65 +1,121 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDown } from "lucide-react"
+import { useRef } from "react"
 
 export function HeroSection() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:80px_80px]" />
+    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+      <motion.div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:50px_50px]"
+        style={{ y }}
+      />
       
-      <div className="container relative z-10 mx-auto px-4 text-center">
+      <motion.div className="container relative z-10 mx-auto px-4 text-center" style={{ opacity }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="space-y-8"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="space-y-12"
         >
-          <motion.h1 
-            className="text-7xl md:text-9xl font-black tracking-tighter"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <motion.div
+            initial={{ scale: 0.8, rotateX: -30 }}
+            animate={{ scale: 1, rotateX: 0 }}
             transition={{ 
-              duration: 0.8,
+              duration: 1.2,
               ease: [0.19, 1, 0.22, 1]
             }}
+            style={{ transformStyle: "preserve-3d", perspective: 1000 }}
           >
-            <motion.span 
-              className="block text-gray-900"
-              initial={{ y: 50 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+            <motion.h1 
+              className="text-7xl md:text-9xl font-black tracking-tighter text-gray-800"
+              whileHover={{ 
+                scale: 1.05,
+                textShadow: "10px 10px 20px rgba(0,0,0,0.1)"
+              }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               S.STUDIO
-            </motion.span>
-          </motion.h1>
+            </motion.h1>
+          </motion.div>
           
-          <motion.p 
-            className="mx-auto max-w-2xl text-xl md:text-2xl text-gray-600 font-light"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
+            className="space-y-6"
           >
-            パーソナルトレーニング / WEBデザイン / SEOライティング / アプリケーション開発
-          </motion.p>
+            <p className="mx-auto max-w-3xl text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
+              デジタルの可能性を、現実のビジネス価値へ
+            </p>
+            
+            <motion.div 
+              className="flex flex-wrap justify-center gap-4 text-gray-500"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, staggerChildren: 0.1 }}
+            >
+              {["パーソナルトレーニング", "WEBデザイン", "SEOライティング", "アプリケーション開発"].map((service, i) => (
+                <motion.span
+                  key={service}
+                  className="px-4 py-2 bg-gray-100 rounded-full text-sm"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + i * 0.1 }}
+                  whileHover={{ 
+                    scale: 1.1,
+                    backgroundColor: "#e5e5e5",
+                    y: -5
+                  }}
+                >
+                  {service}
+                </motion.span>
+              ))}
+            </motion.div>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row justify-center gap-6 pt-8"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                y: -5
+              }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-gray-900 text-white rounded-none font-medium text-lg hover:bg-gray-800 transition-colors"
+              className="group relative px-10 py-5 bg-gray-800 text-white font-medium text-lg overflow-hidden transition-all"
             >
-              サービスを見る
+              <motion.span
+                className="absolute inset-0 bg-gray-700"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+              <span className="relative z-10">サービスを見る</span>
             </motion.button>
+            
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
+                y: -5
+              }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-white text-gray-900 rounded-none font-medium text-lg border-2 border-gray-900 hover:bg-gray-100 transition-colors"
+              className="px-10 py-5 bg-white text-gray-800 font-medium text-lg border-2 border-gray-300 hover:bg-gray-50 transition-all"
             >
               お問い合わせ
             </motion.button>
@@ -80,27 +136,34 @@ export function HeroSection() {
         >
           <ArrowDown className="w-6 h-6 text-gray-400" />
         </motion.div>
-      </div>
+      </motion.div>
 
+      {/* 3D floating elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute bg-gray-900"
+            className="absolute"
             style={{
-              width: '2px',
-              height: '100vh',
-              left: `${20 * (i + 1)}%`,
-              transformOrigin: 'top',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
             }}
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
+            animate={{
+              y: [0, -30, 0],
+              rotateZ: [0, 360],
+            }}
             transition={{
-              duration: 2,
-              delay: i * 0.2,
-              ease: [0.19, 1, 0.22, 1]
+              duration: 10 + Math.random() * 10,
+              repeat: Infinity,
+              ease: "linear",
+              delay: Math.random() * 5,
             }}
-          />
+          >
+            <div className="w-8 h-8 bg-gray-200 opacity-30" style={{
+              transform: "rotateX(45deg) rotateY(45deg)",
+              transformStyle: "preserve-3d",
+            }} />
+          </motion.div>
         ))}
       </div>
     </section>
