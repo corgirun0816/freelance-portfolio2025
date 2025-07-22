@@ -1,23 +1,21 @@
-import { Spatial3DNav } from "@/components/Spatial3DNav"
-import { Spatial3DHero } from "@/components/Spatial3DHero"
-import { Spatial3DServices } from "@/components/Spatial3DServices"
-import { Spatial3DContact } from "@/components/Spatial3DContact"
-import { Spatial3DBackground } from "@/components/Spatial3DBackground"
+import { QuantumNav } from "@/components/FutureComplete/QuantumNav"
+import { QuantumHero } from "@/components/FutureComplete/QuantumHero"
+import { QuantumServices } from "@/components/FutureComplete/QuantumServices"
+import { QuantumContact } from "@/components/FutureComplete/QuantumContact"
 
 export default function Home() {
   return (
     <>
-      <Spatial3DBackground />
-      <Spatial3DNav />
-      <main className="relative">
-        <div id="hero">
-          <Spatial3DHero />
+      <QuantumNav />
+      <main className="relative bg-white">
+        <div id="origin">
+          <QuantumHero />
         </div>
         <div id="services">
-          <Spatial3DServices />
+          <QuantumServices />
         </div>
-        <div id="contact">
-          <Spatial3DContact />
+        <div id="connect">
+          <QuantumContact />
         </div>
       </main>
     </>
