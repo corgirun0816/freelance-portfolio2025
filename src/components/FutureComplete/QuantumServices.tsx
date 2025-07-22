@@ -165,7 +165,7 @@ function ServiceDetails({ service }: any) {
           {Object.entries(service.metrics).map(([key, value]) => (
             <div key={key} className="mb-3">
               <p className="text-xs text-gray-500 capitalize">{key}</p>
-              <p className="text-lg text-gray-700">{value}</p>
+              <p className="text-lg text-gray-700">{String(value)}</p>
             </div>
           ))}
         </div>
