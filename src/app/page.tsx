@@ -1,19 +1,19 @@
-import { Navigation } from "@/components/Navigation"
-import { VolvoxHero } from "@/components/VolvoxHero"
-import { VolvoxServices } from "@/components/VolvoxServices"
-import { Footer } from "@/components/Footer"
-import { VolvoxBackground } from "@/components/VolvoxBackground"
+import { FutureNav } from "@/components/FutureNav"
+import { FutureHero } from "@/components/FutureHero"
+import { FutureServices } from "@/components/FutureServices"
+import { FutureContact } from "@/components/FutureContact"
+import { FutureBackground } from "@/components/FutureBackground"
 
 export default function Home() {
   return (
     <>
-      <VolvoxBackground />
-      <Navigation />
-      <main>
-        <VolvoxHero />
-        <VolvoxServices />
+      <FutureBackground />
+      <FutureNav />
+      <main className="relative">
+        <FutureHero />
+        <FutureServices />
+        <FutureContact />
       </main>
-      <Footer />
     </>
   )
 }
