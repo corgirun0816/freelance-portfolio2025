@@ -54,7 +54,8 @@ function FourDimensionalField() {
       groupRef.current.rotation.x = Math.sin(time * 0.1) * 0.1
       
       // 4D transformation
-      groupRef.current.children.forEach((line, i) => {
+      groupRef.current.children.forEach((child, i) => {
+        const line = child as THREE.Line
         const t = i / lineCount
         const timeOffset = (i % timeSlices) / timeSlices
         line.position.y = Math.sin(time + t * Math.PI * 2) * 2
