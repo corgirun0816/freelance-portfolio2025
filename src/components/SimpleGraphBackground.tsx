@@ -1,12 +1,9 @@
 "use client"
 
-import { Canvas, useFrame, extend, ThreeEvent } from '@react-three/fiber'
+import { Canvas, useFrame, ThreeEvent } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useRouter } from 'next/navigation'
-
-// Extend THREE to include pointer events
-extend(THREE)
 
 interface Node {
   id: string
