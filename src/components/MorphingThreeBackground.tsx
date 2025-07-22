@@ -33,8 +33,9 @@ function MorphingMesh() {
   })
 
   useEffect(() => {
-    if (meshRef.current && geometries[0]) {
-      const positions = geometries[0].attributes.position.array as Float32Array
+    if (geometries[0]) {
+      const geo = geometries[0]
+      const positions = geo.getAttribute('position').array as Float32Array
       vertexAnimations.current = {
         positions: new Float32Array(positions),
         targetPositions: new Float32Array(positions),
@@ -55,7 +56,7 @@ function MorphingMesh() {
       
       // Update target positions
       const targetGeo = geometries[newTargetGeo]
-      const targetPos = targetGeo.attributes.position.array as Float32Array
+      const targetPos = targetGeo.getAttribute('position').array as Float32Array
       
       // Match vertex count by repeating or interpolating
       const currentLength = vertexAnimations.current.positions.length
@@ -148,10 +149,10 @@ function MorphingMesh() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={geometries[0].attributes.position.count}
-          array={geometries[0].attributes.position.array}
+          count={geometries[0].getAttribute('position').count}
+          array={geometries[0].getAttribute('position').array}
           itemSize={3}
-          args={[geometries[0].attributes.position.array, 3]}
+          args={[geometries[0].getAttribute('position').array, 3]}
         />
       </bufferGeometry>
       <meshStandardMaterial
