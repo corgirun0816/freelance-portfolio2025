@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Text, Box, Sphere, PerspectiveCamera } from '@react-three/drei'
+import { Text, Box, Sphere, PerspectiveCamera, Line } from '@react-three/drei'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import * as THREE from 'three'
 
@@ -55,14 +55,10 @@ function FourDimensionalField() {
       
       // 4D transformation
       groupRef.current.children.forEach((child, i) => {
-        const line = child as THREE.Line
         const t = i / lineCount
         const timeOffset = (i % timeSlices) / timeSlices
-        line.position.y = Math.sin(time + t * Math.PI * 2) * 2
-        if (line.material && 'opacity' in line.material) {
-          (line.material as any).opacity = 0.1 + timeOffset * 0.2
-        }
-        line.scale.z = 1 + Math.sin(time * 2 + timeOffset * Math.PI) * 0.5
+        child.position.y = Math.sin(time + t * Math.PI * 2) * 2
+        child.scale.z = 1 + Math.sin(time * 2 + timeOffset * Math.PI) * 0.5
       })
     }
   })
@@ -82,12 +78,15 @@ function FourDimensionalField() {
           points.push(new THREE.Vector3(x, y, z))
         }
         
-        const geometry = new THREE.BufferGeometry().setFromPoints(points)
-        
         return (
-          <line key={i} geometry={geometry}>
-            <lineBasicMaterial color="#e5e5e5" transparent opacity={0.2} />
-          </line>
+          <Line
+            key={i}
+            points={points}
+            color="#e5e5e5"
+            lineWidth={1}
+            transparent
+            opacity={0.2}
+          />
         )
       })}
     </group>
