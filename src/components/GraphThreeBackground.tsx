@@ -125,6 +125,7 @@ function GraphNetwork() {
                 count={2}
                 array={new Float32Array(points.flatMap(p => [p.x, p.y, p.z]))}
                 itemSize={3}
+                args={[new Float32Array(points.flatMap(p => [p.x, p.y, p.z])), 3]}
               />
             </bufferGeometry>
             <lineBasicMaterial 
