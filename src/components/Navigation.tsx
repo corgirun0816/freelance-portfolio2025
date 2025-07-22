@@ -6,10 +6,11 @@ import { useState, useEffect } from "react"
 import { LiquidGlass } from "./LiquidGlass"
 
 const navItems = [
-  { name: "HOME", href: "/" },
-  { name: "SERVICES", href: "/#services" },
-  { name: "ABOUT", href: "/about" },
-  { name: "CONTACT", href: "/contact" },
+  { name: "TRAINING", href: "/services/personal-training" },
+  { name: "WEBDESIGN", href: "/services/web-design" },
+  { name: "アプリケーション開発", href: "/services/app-development" },
+  { name: "WRITING", href: "/services/seo-writing" },
+  { name: "問い合わせ", href: "/contact" },
 ]
 
 export function Navigation() {
@@ -50,12 +51,12 @@ export function Navigation() {
           </div>
           
           <div className="col-span-9">
-            <div className="grid grid-cols-4 gap-1 h-12">
+            <div className="grid grid-cols-5 gap-1 h-12">
               {navItems.map((item, index) => (
                 <LiquidGlass key={item.name} delay={index * 0.1}>
                   <Link
                     href={item.href}
-                    className="h-12 flex items-center justify-center text-sm tracking-widest text-gray-600 hover:text-gray-800 transition-colors"
+                    className="h-12 flex items-center justify-center text-xs tracking-widest text-gray-600 hover:text-gray-800 transition-colors px-2"
                   >
                     {item.name}
                   </Link>
