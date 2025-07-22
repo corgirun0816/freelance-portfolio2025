@@ -6,7 +6,7 @@ import { LiquidGlass } from "./LiquidGlass"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-50 py-16">
+    <footer className="bg-gray-50/90 backdrop-blur-sm py-16">
       <div className="px-4 md:px-8">
         <GridContainer gap={1}>
           <GridItem span={12} className="mb-8">

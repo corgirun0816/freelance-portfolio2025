@@ -45,7 +45,7 @@ export function ServicesSection() {
   return (
     <motion.section 
       ref={sectionRef}
-      className="py-32 bg-white"
+      className="py-32 bg-white/90 backdrop-blur-sm"
       style={{ opacity }}
     >
       <div className="px-4 md:px-8">

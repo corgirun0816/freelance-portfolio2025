@@ -16,7 +16,7 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center bg-gray-50">
+    <section ref={ref} className="relative min-h-screen flex items-center">
       <motion.div className="w-full px-4 md:px-8 py-32" style={{ y, opacity }}>
         <GridContainer gap={1}>
           <GridItem span={12} className="mb-16">

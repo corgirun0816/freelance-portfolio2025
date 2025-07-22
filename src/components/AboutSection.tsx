@@ -17,7 +17,7 @@ export function AboutSection() {
   return (
     <motion.section 
       ref={sectionRef}
-      className="py-32 bg-gray-50"
+      className="py-32 bg-gray-50/90 backdrop-blur-sm"
       style={{ scale }}
     >
       <div className="px-4 md:px-8">

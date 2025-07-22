@@ -21,8 +21,8 @@ export function LiquidGlass({ children, className = "", delay = 0 }: LiquidGlass
       }}
       className={`relative ${className}`}
     >
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-xl rounded-none" />
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-100/20 to-transparent" />
+      <div className="absolute inset-0 bg-white/20 backdrop-blur-md rounded-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-100/10 to-transparent" />
       <div className="relative z-10">
         {children}
       </div>
