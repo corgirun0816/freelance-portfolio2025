@@ -1,18 +1,18 @@
-import { FutureNav } from "@/components/FutureNav"
-import { FutureHero } from "@/components/FutureHero"
-import { FutureServices } from "@/components/FutureServices"
-import { FutureContact } from "@/components/FutureContact"
-import { FutureBackground } from "@/components/FutureBackground"
+import { PhysicsNav } from "@/components/PhysicsNav"
+import { DynamicHero } from "@/components/DynamicHero"
+import { DynamicServices } from "@/components/DynamicServices"
+import { InteractiveContact } from "@/components/InteractiveContact"
+import { FluidBackground } from "@/components/FluidBackground"
 
 export default function Home() {
   return (
     <>
-      <FutureBackground />
-      <FutureNav />
-      <main className="relative">
-        <FutureHero />
-        <FutureServices />
-        <FutureContact />
+      <FluidBackground />
+      <PhysicsNav />
+      <main className="relative bg-white/50">
+        <DynamicHero />
+        <DynamicServices />
+        <InteractiveContact />
       </main>
     </>
   )
