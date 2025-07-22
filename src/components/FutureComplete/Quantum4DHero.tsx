@@ -60,7 +60,9 @@ function FourDimensionalField() {
           const t = i / lineCount
           const timeOffset = (i % timeSlices) / timeSlices
           line.position.y = Math.sin(time + t * Math.PI * 2) * 2
-          line.material.opacity = 0.1 + timeOffset * 0.2
+          if (line.material && 'opacity' in line.material) {
+            (line.material as any).opacity = 0.1 + timeOffset * 0.2
+          }
           line.scale.z = 1 + Math.sin(time * 2 + timeOffset * Math.PI) * 0.5
         }
       })
