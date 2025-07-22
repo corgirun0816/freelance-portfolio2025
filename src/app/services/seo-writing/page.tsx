@@ -24,7 +24,7 @@ export default function SEOWritingPage() {
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-200 rounded-2xl mb-6">
                   <Search className="w-10 h-10 text-gray-700" />
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
                   SEOライティング
                 </h1>
                 <p className="text-lg text-gray-600">
@@ -34,7 +34,7 @@ export default function SEOWritingPage() {
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">サービス内容</h2>
+                  <h2 className="text-2xl font-bold text-gray-800">サービス内容</h2>
                   <p className="text-gray-600 leading-relaxed">
                     SEOの専門知識と優れたライティングスキルを組み合わせ、検索エンジンとユーザーの両方に評価される
                     コンテンツを作成します。長期的な検索順位向上と安定したトラフィック獲得を実現します。
@@ -50,21 +50,21 @@ export default function SEOWritingPage() {
                 </div>
 
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">料金プラン</h2>
+                  <h2 className="text-2xl font-bold text-gray-800">料金プラン</h2>
                   <div className="space-y-4">
                     <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">単発記事作成</h3>
-                      <p className="text-3xl font-bold text-gray-900 mb-2">¥30,000<span className="text-base font-normal text-gray-600">/記事</span></p>
+                      <h3 className="text-xl font-semibold text-gray-700 mb-2">単発記事作成</h3>
+                      <p className="text-3xl font-bold text-gray-700 mb-2">¥30,000<span className="text-base font-normal text-gray-600">/記事</span></p>
                       <p className="text-sm text-gray-600">2,000-3,000文字の記事1本</p>
                     </div>
-                    <div className="p-6 bg-gray-900 text-white rounded-xl">
+                    <div className="p-6 bg-gray-800 text-white rounded-xl">
                       <h3 className="text-xl font-semibold mb-2">月額プラン</h3>
                       <p className="text-3xl font-bold mb-2">¥150,000<span className="text-base font-normal opacity-80">/月</span></p>
                       <p className="text-sm opacity-80">月5記事 + SEO戦略立案</p>
                     </div>
                     <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">プレミアムプラン</h3>
-                      <p className="text-3xl font-bold text-gray-900 mb-2">¥300,000<span className="text-base font-normal text-gray-600">/月</span></p>
+                      <h3 className="text-xl font-semibold text-gray-700 mb-2">プレミアムプラン</h3>
+                      <p className="text-3xl font-bold text-gray-700 mb-2">¥300,000<span className="text-base font-normal text-gray-600">/月</span></p>
                       <p className="text-sm text-gray-600">月10記事 + 完全SEOサポート</p>
                     </div>
                   </div>
@@ -73,7 +73,7 @@ export default function SEOWritingPage() {
 
               <div className="text-center">
                 <Link href="/contact">
-                  <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                  <button className="px-8 py-4 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors">
                     無料相談を申し込む
                   </button>
                 </Link>

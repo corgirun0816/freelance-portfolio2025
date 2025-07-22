@@ -102,7 +102,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
             </motion.p>
 
             <motion.div 
-              className="mt-6 inline-flex items-center text-gray-700 font-medium group-hover:text-gray-900"
+              className="mt-6 inline-flex items-center text-gray-700 font-medium group-hover:text-gray-800"
               animate={isHovered ? { x: 10 } : { x: 0 }}
               style={{ transform: "translateZ(30px)" }}
             >

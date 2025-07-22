@@ -35,7 +35,7 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-black text-gray-900 tracking-tight">
+          <Link href="/" className="text-2xl font-black text-gray-800 tracking-tight">
             S.STUDIO
           </Link>
 
@@ -44,7 +44,7 @@ export function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
+                className="text-gray-700 hover:text-gray-800 transition-colors font-medium"
               >
                 {item.name}
               </Link>
@@ -53,7 +53,7 @@ export function Navigation() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-gray-900"
+            className="md:hidden p-2 text-gray-700 hover:text-gray-800"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -73,7 +73,7 @@ export function Navigation() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-2 text-gray-700 hover:text-gray-900 transition-colors font-medium"
+                className="block py-2 text-gray-700 hover:text-gray-800 transition-colors font-medium"
               >
                 {item.name}
               </Link>

@@ -24,7 +24,7 @@ export default function AppDevelopmentPage() {
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-200 rounded-2xl mb-6">
                   <Code className="w-10 h-10 text-gray-700" />
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
                   アプリケーション開発
                 </h1>
                 <p className="text-lg text-gray-600">
@@ -34,7 +34,7 @@ export default function AppDevelopmentPage() {
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">サービス内容</h2>
+                  <h2 className="text-2xl font-bold text-gray-800">サービス内容</h2>
                   <p className="text-gray-600 leading-relaxed">
                     ウェブアプリケーションからモバイルアプリまで、ビジネスニーズに合わせた
                     カスタムソリューションを開発します。最新技術を活用し、ユーザー体験と
@@ -51,21 +51,21 @@ export default function AppDevelopmentPage() {
                 </div>
 
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-gray-900">料金プラン</h2>
+                  <h2 className="text-2xl font-bold text-gray-800">料金プラン</h2>
                   <div className="space-y-4">
                     <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">MVP開発</h3>
-                      <p className="text-3xl font-bold text-gray-900 mb-2">¥1,000,000<span className="text-base font-normal text-gray-600">〜</span></p>
+                      <h3 className="text-xl font-semibold text-gray-700 mb-2">MVP開発</h3>
+                      <p className="text-3xl font-bold text-gray-700 mb-2">¥1,000,000<span className="text-base font-normal text-gray-600">〜</span></p>
                       <p className="text-sm text-gray-600">最小限の機能での製品開発</p>
                     </div>
-                    <div className="p-6 bg-gray-900 text-white rounded-xl">
+                    <div className="p-6 bg-gray-800 text-white rounded-xl">
                       <h3 className="text-xl font-semibold mb-2">フルスタック開発</h3>
                       <p className="text-3xl font-bold mb-2">¥3,000,000<span className="text-base font-normal opacity-80">〜</span></p>
                       <p className="text-sm opacity-80">完全なウェブアプリケーション</p>
                     </div>
                     <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">エンタープライズ</h3>
-                      <p className="text-3xl font-bold text-gray-900 mb-2">要相談</p>
+                      <h3 className="text-xl font-semibold text-gray-700 mb-2">エンタープライズ</h3>
+                      <p className="text-3xl font-bold text-gray-700 mb-2">要相談</p>
                       <p className="text-sm text-gray-600">大規模システムの開発・統合</p>
                     </div>
                   </div>
@@ -74,7 +74,7 @@ export default function AppDevelopmentPage() {
 
               <div className="text-center">
                 <Link href="/contact">
-                  <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                  <button className="px-8 py-4 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors">
                     プロジェクトの相談をする
                   </button>
                 </Link>
