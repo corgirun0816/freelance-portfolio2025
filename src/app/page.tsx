@@ -2,12 +2,12 @@ import { Navigation } from "@/components/Navigation"
 import { HeroSection } from "@/components/HeroSection"
 import { ServiceSections } from "@/components/ServiceSections"
 import { Footer } from "@/components/Footer"
-import { InteractiveGraphBackground } from "@/components/InteractiveGraphBackground"
+import { SimpleGraphBackground } from "@/components/SimpleGraphBackground"
 
 export default function Home() {
   return (
     <>
-      <InteractiveGraphBackground />
+      <SimpleGraphBackground />
       <Navigation />
       <main>
         <HeroSection />

@@ -58,7 +58,6 @@ function InteractiveNode({ node, isHovered, onHover, onClick }: {
         color="#6b7280"
         anchorX="center"
         anchorY="middle"
-        font="/fonts/inter-v12-latin-regular.woff"
       >
         {node.label}
       </Text>
