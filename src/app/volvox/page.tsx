@@ -4,7 +4,7 @@ import { VolvoxServices } from "@/components/VolvoxServices"
 import { Footer } from "@/components/Footer"
 import { VolvoxBackground } from "@/components/VolvoxBackground"
 
-export default function Home() {
+export default function VolvoxPage() {
   return (
     <>
       <VolvoxBackground />
