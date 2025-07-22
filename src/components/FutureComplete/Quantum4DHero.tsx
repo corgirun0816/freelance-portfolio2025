@@ -43,7 +43,6 @@ function TemporalText({ children, position, time, delay = 0 }: any) {
 
 function FourDimensionalField() {
   const groupRef = useRef<THREE.Group>(null!)
-  const linesRef = useRef<THREE.Line[]>([])
   
   const lineCount = 20
   const timeSlices = 5
@@ -55,16 +54,14 @@ function FourDimensionalField() {
       groupRef.current.rotation.x = Math.sin(time * 0.1) * 0.1
       
       // 4D transformation
-      linesRef.current.forEach((line, i) => {
-        if (line) {
-          const t = i / lineCount
-          const timeOffset = (i % timeSlices) / timeSlices
-          line.position.y = Math.sin(time + t * Math.PI * 2) * 2
-          if (line.material && 'opacity' in line.material) {
-            (line.material as any).opacity = 0.1 + timeOffset * 0.2
-          }
-          line.scale.z = 1 + Math.sin(time * 2 + timeOffset * Math.PI) * 0.5
+      groupRef.current.children.forEach((line, i) => {
+        const t = i / lineCount
+        const timeOffset = (i % timeSlices) / timeSlices
+        line.position.y = Math.sin(time + t * Math.PI * 2) * 2
+        if (line.material && 'opacity' in line.material) {
+          (line.material as any).opacity = 0.1 + timeOffset * 0.2
         }
+        line.scale.z = 1 + Math.sin(time * 2 + timeOffset * Math.PI) * 0.5
       })
     }
   })
@@ -87,7 +84,7 @@ function FourDimensionalField() {
         const geometry = new THREE.BufferGeometry().setFromPoints(points)
         
         return (
-          <line key={i} ref={(el) => el && (linesRef.current[i] = el)} geometry={geometry}>
+          <line key={i} geometry={geometry}>
             <lineBasicMaterial color="#e5e5e5" transparent opacity={0.2} />
           </line>
         )
