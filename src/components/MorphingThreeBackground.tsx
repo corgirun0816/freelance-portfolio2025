@@ -151,6 +151,7 @@ function MorphingMesh() {
           count={geometries[0].attributes.position.count}
           array={geometries[0].attributes.position.array}
           itemSize={3}
+          args={[geometries[0].attributes.position.array, 3]}
         />
       </bufferGeometry>
       <meshStandardMaterial
