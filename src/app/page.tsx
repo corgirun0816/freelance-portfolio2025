@@ -2,12 +2,12 @@ import { Navigation } from "@/components/Navigation"
 import { HeroSection } from "@/components/HeroSection"
 import { ServiceSections } from "@/components/ServiceSections"
 import { Footer } from "@/components/Footer"
-import { InteractiveThreeBackground } from "@/components/InteractiveThreeBackground"
+import { MorphingThreeBackground } from "@/components/MorphingThreeBackground"
 
 export default function Home() {
   return (
     <>
-      <InteractiveThreeBackground />
+      <MorphingThreeBackground />
       <Navigation />
       <main>
         <HeroSection />
