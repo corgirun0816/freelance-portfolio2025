@@ -1,9 +1,12 @@
 "use client"
 
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, extend, ThreeEvent } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useRouter } from 'next/navigation'
+
+// Extend THREE to include pointer events
+extend(THREE)
 
 interface Node {
   id: string
@@ -21,17 +24,33 @@ function GraphNode({ node, onClick }: { node: Node; onClick: (href?: string) => 
     const time = state.clock.getElapsedTime()
     if (meshRef.current) {
       meshRef.current.scale.setScalar(hovered ? 1.2 : 1)
-      meshRef.current.position.y = node.position[1] + Math.sin(time * 2 + node.position[0]) * 0.05
+      // Floating animation
+      const baseY = node.position[1]
+      meshRef.current.position.y = baseY + Math.sin(time * 2 + node.position[0]) * 0.05
     }
   })
+  
+  const handleClick = (event: ThreeEvent<MouseEvent>) => {
+    event.stopPropagation()
+    console.log('Clicked node:', node.label, node.href)
+    onClick(node.href)
+  }
   
   return (
     <mesh
       ref={meshRef}
       position={node.position}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      onClick={() => onClick(node.href)}
+      onPointerOver={(e) => {
+        e.stopPropagation()
+        setHovered(true)
+        document.body.style.cursor = 'pointer'
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation()
+        setHovered(false)
+        document.body.style.cursor = 'auto'
+      }}
+      onClick={handleClick}
     >
       <sphereGeometry args={[node.size, 32, 32]} />
       <meshStandardMaterial
@@ -55,7 +74,10 @@ export function SimpleGraphBackground() {
   ]
   
   const handleClick = (href?: string) => {
-    if (href) router.push(href)
+    if (href) {
+      console.log('Navigating to:', href)
+      router.push(href)
+    }
   }
   
   return (
