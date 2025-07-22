@@ -15,9 +15,9 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:50px_50px]"
+        className="absolute inset-0 bg-[linear-gradient(to_right,rgba(229,229,229,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,229,229,0.3)_1px,transparent_1px)] bg-[size:50px_50px]"
         style={{ y }}
       />
       

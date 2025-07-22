@@ -153,7 +153,7 @@ export function ServicesSection() {
   return (
     <motion.section 
       ref={sectionRef}
-      className="py-32 bg-white relative overflow-hidden"
+      className="py-32 bg-white/80 backdrop-blur-sm relative overflow-hidden"
       style={{ opacity, scale }}
     >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:100px_100px] opacity-30" />

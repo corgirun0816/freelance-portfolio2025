@@ -152,7 +152,7 @@ export function DynamicParticleBackground() {
       <canvas
         ref={canvasRef}
         className="fixed inset-0 -z-10"
-        style={{ background: "linear-gradient(to bottom, #fafafa, #f5f5f5)" }}
+        style={{ background: "linear-gradient(to bottom, #fafafa, #f9f9f9)" }}
       />
       <motion.div
         className="fixed inset-0 -z-10 pointer-events-none"
