@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shota's Portfolio - Liquid Glass</title>
+    <script type="module" crossorigin src="https://glass.danilofiumi.com/web-comps/boundle.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #a8c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .service-card {
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 4rem 0 3rem;
+            background: linear-gradient(45deg, #fff, #a8c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .service-content {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-top: 1rem;
+            min-height: 150px;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .contact-section {
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+        
+        .contact-content {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            right: -5%;
+            animation-delay: 5s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 500px;
+            height: 500px;
+            bottom: -20%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Shota's Portfolio</h1>
+            <p class="hero-subtitle">フリーランスクリエイター</p>
+            
+            <nav class="nav-container">
+                <sv-liquid-glass
+                    styles='{
+                        "style":{"roundness":40,"padding_x":4,"padding_y":2},
+                        "text":{"content":"ホーム","edit":false,"font_family":"Inter","size_weight":500,"font_size":3},
+                        "color":{"accent":"#a8c0ff"}
+                    }'
+                    contrast="dark">
+                </sv-liquid-glass>
+                
+                <sv-liquid-glass
+                    styles='{
+                        "style":{"roundness":40,"padding_x":4,"padding_y":2},
+                        "text":{"content":"サービス","edit":false,"font_family":"Inter","size_weight":500,"font_size":3},
+                        "color":{"accent":"#a8c0ff"}
+                    }'
+                    contrast="dark">
+                </sv-liquid-glass>
+                
+                <sv-liquid-glass
+                    styles='{
+                        "style":{"roundness":40,"padding_x":4,"padding_y":2},
+                        "text":{"content":"お問い合わせ","edit":false,"font_family":"Inter","size_weight":500,"font_size":3},
+                        "color":{"accent":"#a8c0ff"}
+                    }'
+                    contrast="dark">
+                </sv-liquid-glass>
+            </nav>
+        </header>
+        
+        <section>
+            <h2 class="section-title">サービス</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <sv-liquid-glass
+                        styles='{
+                            "style":{"roundness":20,"padding_x":5,"padding_y":3},
+                            "text":{"content":"パーソナルトレーニング","edit":false,"font_family":"Inter","size_weight":600,"font_size":3.5},
+                            "color":{"accent":"#ff6b6b"}
+                        }'
+                        contrast="dark-contrast">
+                    </sv-liquid-glass>
+                    <div class="service-content">
+                        <p class="service-description">
+                            あなたの目標に合わせたカスタマイズされたトレーニングプログラムを提供。
+                            健康的なライフスタイルの実現をサポートします。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <sv-liquid-glass
+                        styles='{
+                            "style":{"roundness":20,"padding_x":5,"padding_y":3},
+                            "text":{"content":"WEBデザイン","edit":false,"font_family":"Inter","size_weight":600,"font_size":3.5},
+                            "color":{"accent":"#4ecdc4"}
+                        }'
+                        contrast="dark-contrast">
+                    </sv-liquid-glass>
+                    <div class="service-content">
+                        <p class="service-description">
+                            モダンで美しいウェブサイトのデザインを制作。
+                            ユーザー体験を重視した、印象的なデザインを提供します。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <sv-liquid-glass
+                        styles='{
+                            "style":{"roundness":20,"padding_x":5,"padding_y":3},
+                            "text":{"content":"アプリ開発","edit":false,"font_family":"Inter","size_weight":600,"font_size":3.5},
+                            "color":{"accent":"#45b7d1"}
+                        }'
+                        contrast="dark-contrast">
+                    </sv-liquid-glass>
+                    <div class="service-content">
+                        <p class="service-description">
+                            iOS、Android、ウェブアプリケーションの開発。
+                            アイデアを形にする、高品質なアプリを制作します。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <sv-liquid-glass
+                        styles='{
+                            "style":{"roundness":20,"padding_x":5,"padding_y":3},
+                            "text":{"content":"SEOライティング","edit":false,"font_family":"Inter","size_weight":600,"font_size":3.5},
+                            "color":{"accent":"#f7b731"}
+                        }'
+                        contrast="dark-contrast">
+                    </sv-liquid-glass>
+                    <div class="service-content">
+                        <p class="service-description">
+                            検索エンジンに最適化されたコンテンツ作成。
+                            質の高い記事で、あなたのビジネスの成長を支援します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact-section">
+            <sv-liquid-glass
+                styles='{
+                    "style":{"roundness":50,"padding_x":6,"padding_y":4},
+                    "text":{"content":"お問い合わせ","edit":false,"font_family":"Inter","size_weight":700,"font_size":4},
+                    "color":{"accent":"#a8c0ff"}
+                }'
+                contrast="dark-contrast">
+            </sv-liquid-glass>
+            
+            <div class="contact-content">
+                <p>プロジェクトのご相談、お見積もりなど</p>
+                <p>お気軽にお問い合わせください</p>
+                
+                <div style="margin-top: 2rem;">
+                    <sv-liquid-glass
+                        styles='{
+                            "style":{"roundness":40,"padding_x":5,"padding_y":3},
+                            "text":{"content":"メールで問い合わせる →","edit":false,"font_family":"Inter","size_weight":500,"font_size":3.5},
+                            "color":{"accent":"#4ecdc4"}
+                        }'
+                        contrast="dark">
+                    </sv-liquid-glass>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Add click interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('sv-liquid-glass');
+            buttons.forEach(button => {
+                button.style.cursor = 'pointer';
+                button.addEventListener('click', () => {
+                    // Add ripple effect or navigation logic here
+                    console.log('Clicked:', button.getAttribute('styles'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

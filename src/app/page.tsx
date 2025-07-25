@@ -1,29 +1,25 @@
-import { QuantumNav } from "@/components/FutureComplete/QuantumNav"
-import { Quantum4DHero } from "@/components/FutureComplete/Quantum4DHero"
-import { TimeTravel } from "@/components/MindControl/TimeTravel"
-import { GravityDefyingServices } from "@/components/MindControl/GravityDefyingServices"
-import { QuantumContact } from "@/components/FutureComplete/QuantumContact"
-import { ThoughtInterface } from "@/components/MindControl/ThoughtInterface"
-import { EvolvingAI } from "@/components/MindControl/EvolvingAI"
+import { LiquidGlassNav } from "@/components/LiquidGlassNav"
+import { LiquidGlassHero } from "@/components/LiquidGlassHero"
+import { LiquidGlassTimeline } from "@/components/LiquidGlassTimeline"
+import { LiquidGlassServices } from "@/components/LiquidGlassServices"
+import { LiquidGlassContact } from "@/components/LiquidGlassContact"
 
 export default function Home() {
   return (
     <>
-      <QuantumNav />
-      <ThoughtInterface />
-      <EvolvingAI />
-      <main className="relative bg-white">
+      <LiquidGlassNav />
+      <main className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 min-h-screen">
         <div id="origin">
-          <Quantum4DHero />
+          <LiquidGlassHero />
         </div>
         <div id="timeline">
-          <TimeTravel />
+          <LiquidGlassTimeline />
         </div>
         <div id="services">
-          <GravityDefyingServices />
+          <LiquidGlassServices />
         </div>
         <div id="connect">
-          <QuantumContact />
+          <LiquidGlassContact />
         </div>
       </main>
     </>
