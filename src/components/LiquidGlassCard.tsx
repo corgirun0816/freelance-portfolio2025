@@ -72,8 +72,6 @@ export function LiquidGlassCard({
         ...baseStyles,
         transformStyle: 'preserve-3d',
         perspective: '1000px',
-      }}
-      animate={{
         rotateX: interactive ? rotateX : 0,
         rotateY: interactive ? rotateY : 0,
       }}

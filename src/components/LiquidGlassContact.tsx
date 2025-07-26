@@ -107,7 +107,7 @@ export function LiquidGlassContact() {
               padding={3}
               glowColor="#4ecdc4"
             >
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-4">
                 <div>
                   <label className="block text-gray-300 mb-2 text-sm">お名前</label>
                   <input
@@ -148,7 +148,6 @@ export function LiquidGlassContact() {
                 </div>
 
                 <LiquidGlassButton
-                  type="submit"
                   contrast="dark"
                   roundness={25}
                   paddingX={5}
@@ -157,11 +156,15 @@ export function LiquidGlassContact() {
                   fontWeight={600}
                   accentColor="#4ecdc4"
                   className="w-full flex items-center justify-center gap-2"
+                  onClick={() => {
+                    const fakeEvent = { preventDefault: () => {} } as React.FormEvent
+                    handleSubmit(fakeEvent)
+                  }}
                 >
                   <Send size={18} />
                   送信する
                 </LiquidGlassButton>
-              </form>
+              </div>
             </LiquidGlassCard>
           </motion.div>
         </div>
