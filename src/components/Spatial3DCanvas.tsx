@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Float, Text, Box, RoundedBox, MeshDistortMaterial } from '@react-three/drei'
+import { OrbitControls, Float, Text, Box, RoundedBox, MeshDistortMaterial, Line } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import { 
   Code2, Palette, PenTool, Dumbbell, 
@@ -95,12 +95,19 @@ function ConnectionLine({ start, end, color = '#e0e7ff' }: any) {
   ])
 
   const points = curve.getPoints(50)
-  const geometry = new THREE.BufferGeometry().setFromPoints(points)
 
   return (
-    <line geometry={geometry}>
-      <lineBasicMaterial color={color} opacity={0.3} transparent />
-    </line>
+    <Line
+      points={points}
+      color={color}
+      lineWidth={2}
+      opacity={0.3}
+      transparent
+      dashed
+      dashScale={2}
+      dashSize={2}
+      dashOffset={0}
+    />
   )
 }
 
