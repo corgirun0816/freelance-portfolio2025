@@ -3,9 +3,7 @@
 import { useRef, useState, useMemo } from 'react'
 import { Canvas, useFrame, extend, useLoader } from '@react-three/fiber'
 import { OrbitControls, Float, Text3D, Center, Environment, MeshTransmissionMaterial } from '@react-three/drei'
-import { motion } from 'framer-motion-3d'
 import * as THREE from 'three'
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 
 // Custom shader for liquid glass effect
 const liquidGlassShader = {
