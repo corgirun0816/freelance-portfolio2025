@@ -1,5 +1,5 @@
-import { ModernInfiniteCanvas } from "@/components/ModernInfiniteCanvas"
+import { Full3DCanvas } from "@/components/Full3DCanvas"
 
 export default function Home() {
-  return <ModernInfiniteCanvas />
+  return <Full3DCanvas />
 }
