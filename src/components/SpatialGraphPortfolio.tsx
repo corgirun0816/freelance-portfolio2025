@@ -144,7 +144,7 @@ function Card3D({
           <div className="flex-1">
             <h3 className="font-semibold text-gray-900 mb-1">{node.title}</h3>
             <p className="text-sm text-gray-600">{node.description}</p>
-            {node.children && node.children.length > 0 && (
+            {'children' in node && node.children && node.children.length > 0 && (
               <div className="flex items-center gap-1 mt-2 text-xs text-gray-500">
                 <span>{node.children.length} connections</span>
                 <ChevronRight className="w-3 h-3" />
@@ -287,7 +287,7 @@ export function SpatialGraphPortfolio() {
     setSelectedNode(nodeId)
     // Expand children when selecting a node
     const node = nodes[nodeId as keyof typeof nodes]
-    if (node.children && node.children.length > 0) {
+    if ('children' in node && node.children && node.children.length > 0) {
       setExpandedNodes(prev => [...new Set([...prev, nodeId, ...node.children])])
     }
   }
@@ -305,7 +305,7 @@ export function SpatialGraphPortfolio() {
         >
           {/* Render connections */}
           {Object.values(nodes).map(node => {
-            if (node.children) {
+            if ('children' in node && node.children) {
               return node.children.map(childId => {
                 const childNode = nodes[childId as keyof typeof nodes]
                 if (childNode && expandedNodes.includes(childId)) {
@@ -328,7 +328,7 @@ export function SpatialGraphPortfolio() {
             if (!expandedNodes.includes(node.id)) return null
             
             const depth = node.id === 'main' ? 0 : 
-                         node.parent === 'personal-training' ? 2 : 1
+                         'parent' in node && node.parent === 'personal-training' ? 2 : 1
 
             return (
               <Card3D
