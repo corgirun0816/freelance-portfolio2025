@@ -330,7 +330,7 @@ export function ExpandedGraphPortfolio() {
         >
           {/* Render all connections */}
           {Object.values(nodes).map(node => {
-            if (node.children) {
+            if ('children' in node && node.children) {
               return node.children.map(childId => {
                 const childNode = nodes[childId as keyof typeof nodes]
                 return (
