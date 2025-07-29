@@ -168,12 +168,12 @@ function SmallCard({
   return (
     <motion.div
       layoutId={node.id}
-      className="absolute cursor-pointer"
+      className="absolute cursor-pointer z-10"
       style={{
         left: '50%',
         top: '50%',
-        x: node.position.x - (node.id === 'main' ? 160 : 120),
-        y: node.position.y - (node.id === 'main' ? 72 : 60),
+        x: node.position.x - 120,
+        y: node.position.y - 60,
       }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ 
@@ -184,13 +184,13 @@ function SmallCard({
       onClick={() => onSelect(node.id)}
       whileHover={{ scale: 1.05 }}
     >
-      <div className={`bg-white rounded-xl shadow-lg ${node.id === 'main' ? 'p-6 w-80 h-36' : 'p-4 w-60 h-28'} flex items-center gap-3`}>
-        <div className={`${node.id === 'main' ? 'w-16 h-16' : 'w-12 h-12'} rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0`}>
-          <Icon className={`${node.id === 'main' ? 'w-8 h-8' : 'w-6 h-6'} text-gray-700`} />
+      <div className="bg-white rounded-xl shadow-lg p-4 w-60 h-28 flex items-center gap-3">
+        <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+          <Icon className="w-6 h-6 text-gray-700" />
         </div>
         <div className="flex-1">
-          <h3 className={`font-semibold text-gray-900 ${node.id === 'main' ? 'text-lg' : 'text-sm'}`}>{node.title}</h3>
-          <p className={`${node.id === 'main' ? 'text-sm' : 'text-xs'} text-gray-600 mt-1`}>{node.description}</p>
+          <h3 className="font-semibold text-gray-900 text-sm">{node.title}</h3>
+          <p className="text-xs text-gray-600 mt-1">{node.description}</p>
         </div>
       </div>
     </motion.div>
@@ -461,7 +461,7 @@ function ConnectionLines() {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas || dimensions.width === 0 || dimensions.height === 0) return
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
@@ -470,10 +470,10 @@ function ConnectionLines() {
     ctx.clearRect(0, 0, dimensions.width, dimensions.height)
 
     // Set line style
-    ctx.strokeStyle = '#e5e7eb'
+    ctx.strokeStyle = '#d1d5db'
     ctx.lineWidth = 2
     ctx.setLineDash([5, 5])
-    ctx.globalAlpha = 0.5
+    ctx.globalAlpha = 0.6
 
     // Center position
     const centerX = dimensions.width / 2
@@ -501,7 +501,7 @@ function ConnectionLines() {
       width={dimensions.width}
       height={dimensions.height}
       className="absolute inset-0 pointer-events-none"
-      style={{ zIndex: -1 }}
+      style={{ zIndex: 0 }}
     />
   )
 }
