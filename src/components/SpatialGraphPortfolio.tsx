@@ -92,7 +92,7 @@ function Card3D({
   onSelect,
   depth = 0 
 }: { 
-  node: typeof nodes.main
+  node: Node
   isSelected: boolean
   onSelect: (id: string) => void
   depth?: number
@@ -157,8 +157,19 @@ function Card3D({
   )
 }
 
+// Node type definition
+type Node = {
+  id: string
+  title: string
+  description: string
+  position: { x: number; y: number; z: number }
+  icon: any
+  children?: string[]
+  parent?: string
+}
+
 // Connection Line Component
-function Connection({ from, to }: { from: typeof nodes.main; to: typeof nodes.main }) {
+function Connection({ from, to }: { from: Node; to: Node }) {
   return (
     <svg 
       className="absolute inset-0 pointer-events-none" 
