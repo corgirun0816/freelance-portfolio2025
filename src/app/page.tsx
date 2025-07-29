@@ -1,5 +1,5 @@
-import { MinimalPortfolio } from "@/components/MinimalPortfolio"
+import { GraphPortfolio } from "@/components/GraphPortfolio"
 
 export default function Home() {
-  return <MinimalPortfolio />
+  return <GraphPortfolio />
 }
