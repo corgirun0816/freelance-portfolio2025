@@ -1,5 +1,5 @@
-import { ExpandedGraphPortfolio } from "@/components/ExpandedGraphPortfolio"
+import { CenteredGraphPortfolio } from "@/components/CenteredGraphPortfolio"
 
 export default function Home() {
-  return <ExpandedGraphPortfolio />
+  return <CenteredGraphPortfolio />
 }
