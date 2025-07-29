@@ -80,7 +80,7 @@ const nodes = {
     id: 'fitness-assessment',
     title: 'Fitness Assessment',
     description: 'Body composition & movement analysis',
-    position: { x: -300, y: 450 },
+    position: { x: -400, y: 450 },
     icon: Activity,
     parent: 'personal-training',
     content: {
@@ -92,7 +92,7 @@ const nodes = {
     id: 'training-program',
     title: 'Training Program',
     description: 'Customized workout plans',
-    position: { x: -100, y: 500 },
+    position: { x: -135, y: 480 },
     icon: Target,
     parent: 'personal-training',
     content: {
@@ -104,7 +104,7 @@ const nodes = {
     id: 'nutrition',
     title: 'Nutrition Guidance',
     description: 'Meal planning & dietary advice',
-    position: { x: 100, y: 500 },
+    position: { x: 135, y: 480 },
     icon: Heart,
     parent: 'personal-training',
     content: {
@@ -116,7 +116,7 @@ const nodes = {
     id: 'mental-wellness',
     title: 'Mental Wellness',
     description: 'Stress management & mindfulness',
-    position: { x: 300, y: 450 },
+    position: { x: 400, y: 450 },
     icon: Brain,
     parent: 'personal-training',
     content: {
@@ -172,8 +172,8 @@ function SmallCard({
       style={{
         left: '50%',
         top: '50%',
-        x: node.position.x - 120,
-        y: node.position.y - 60,
+        x: node.position.x - (node.id === 'main' ? 160 : 120),
+        y: node.position.y - (node.id === 'main' ? 72 : 60),
       }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ 
@@ -184,13 +184,13 @@ function SmallCard({
       onClick={() => onSelect(node.id)}
       whileHover={{ scale: 1.05 }}
     >
-      <div className="bg-white rounded-xl shadow-lg p-4 w-60 h-28 flex items-center gap-3">
-        <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-          <Icon className="w-6 h-6 text-gray-700" />
+      <div className={`bg-white rounded-xl shadow-lg ${node.id === 'main' ? 'p-6 w-80 h-36' : 'p-4 w-60 h-28'} flex items-center gap-3`}>
+        <div className={`${node.id === 'main' ? 'w-16 h-16' : 'w-12 h-12'} rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0`}>
+          <Icon className={`${node.id === 'main' ? 'w-8 h-8' : 'w-6 h-6'} text-gray-700`} />
         </div>
         <div className="flex-1">
-          <h3 className="font-semibold text-gray-900 text-sm">{node.title}</h3>
-          <p className="text-xs text-gray-600 mt-1">{node.description}</p>
+          <h3 className={`font-semibold text-gray-900 ${node.id === 'main' ? 'text-lg' : 'text-sm'}`}>{node.title}</h3>
+          <p className={`${node.id === 'main' ? 'text-sm' : 'text-xs'} text-gray-600 mt-1`}>{node.description}</p>
         </div>
       </div>
     </motion.div>
