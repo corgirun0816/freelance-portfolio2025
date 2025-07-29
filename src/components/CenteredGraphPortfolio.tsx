@@ -80,7 +80,7 @@ const nodes = {
     id: 'fitness-assessment',
     title: 'Fitness Assessment',
     description: 'Body composition & movement analysis',
-    position: { x: -200, y: 400 },
+    position: { x: -300, y: 450 },
     icon: Activity,
     parent: 'personal-training',
     content: {
@@ -92,7 +92,7 @@ const nodes = {
     id: 'training-program',
     title: 'Training Program',
     description: 'Customized workout plans',
-    position: { x: -70, y: 420 },
+    position: { x: -100, y: 500 },
     icon: Target,
     parent: 'personal-training',
     content: {
@@ -104,7 +104,7 @@ const nodes = {
     id: 'nutrition',
     title: 'Nutrition Guidance',
     description: 'Meal planning & dietary advice',
-    position: { x: 70, y: 420 },
+    position: { x: 100, y: 500 },
     icon: Heart,
     parent: 'personal-training',
     content: {
@@ -116,7 +116,7 @@ const nodes = {
     id: 'mental-wellness',
     title: 'Mental Wellness',
     description: 'Stress management & mindfulness',
-    position: { x: 200, y: 400 },
+    position: { x: 300, y: 450 },
     icon: Brain,
     parent: 'personal-training',
     content: {
@@ -284,6 +284,108 @@ function ExpandedCard({
             </div>
           )}
 
+          {/* Technologies */}
+          {node.content.technologies && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Technologies</h3>
+              <div className="flex flex-wrap gap-2">
+                {node.content.technologies.map((tech, index) => (
+                  <span key={index} className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Projects */}
+          {node.content.projects && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Projects</h3>
+              <div className="space-y-2">
+                {node.content.projects.map((project, index) => (
+                  <div key={index} className="p-3 bg-gray-50 rounded-lg">
+                    <span className="text-gray-700">{project}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Approach */}
+          {node.content.approach && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Our Approach</h3>
+              <div className="space-y-2">
+                {node.content.approach.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-gray-400" />
+                    <span className="text-gray-600">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Specialties */}
+          {node.content.specialties && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Specialties</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {node.content.specialties.map((specialty, index) => (
+                  <div key={index} className="p-3 border border-gray-200 rounded-lg">
+                    <span className="text-gray-700">{specialty}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Includes */}
+          {node.content.includes && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">What's Included</h3>
+              <div className="space-y-2">
+                {node.content.includes.map((item, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center mt-0.5">
+                      <div className="w-2 h-2 rounded-full bg-gray-600" />
+                    </div>
+                    <span className="text-gray-600">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Types */}
+          {node.content.types && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Program Types</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {node.content.types.map((type, index) => (
+                  <div key={index} className="p-3 bg-gray-50 rounded-lg text-center">
+                    <span className="text-gray-700">{type}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Focus areas */}
+          {node.content.focus && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Focus Areas</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {node.content.focus.map((area, index) => (
+                  <div key={index} className="p-3 border border-gray-200 rounded-lg">
+                    <span className="text-gray-700">{area}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Child Nodes */}
           {node.children && node.children.length > 0 && (
             <div>
@@ -311,21 +413,71 @@ function ExpandedCard({
   )
 }
 
-// Connection Line Component
-function Connection({ from, to }: { from: Node; to: Node }) {
+// Connection Lines Component
+function ConnectionLines() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (canvasRef.current && canvasRef.current.parentElement) {
+        const parent = canvasRef.current.parentElement
+        setDimensions({
+          width: parent.offsetWidth,
+          height: parent.offsetHeight
+        })
+      }
+    }
+
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+    return () => window.removeEventListener('resize', updateDimensions)
+  }, [])
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    // Clear canvas
+    ctx.clearRect(0, 0, dimensions.width, dimensions.height)
+
+    // Set line style
+    ctx.strokeStyle = '#e5e7eb'
+    ctx.lineWidth = 2
+    ctx.setLineDash([5, 5])
+    ctx.globalAlpha = 0.5
+
+    // Center position
+    const centerX = dimensions.width / 2
+    const centerY = dimensions.height / 2
+
+    // Draw connections
+    Object.values(nodes).forEach(node => {
+      if ('children' in node && node.children) {
+        node.children.forEach(childId => {
+          const childNode = nodes[childId as keyof typeof nodes]
+          if (childNode) {
+            ctx.beginPath()
+            ctx.moveTo(centerX + node.position.x, centerY + node.position.y)
+            ctx.lineTo(centerX + childNode.position.x, centerY + childNode.position.y)
+            ctx.stroke()
+          }
+        })
+      }
+    })
+  }, [dimensions])
+
   return (
-    <svg className="absolute inset-0 pointer-events-none" style={{ zIndex: -1 }}>
-      <line
-        x1={`${50 + from.position.x / 10}%`}
-        y1={`${50 + from.position.y / 10}%`}
-        x2={`${50 + to.position.x / 10}%`}
-        y2={`${50 + to.position.y / 10}%`}
-        stroke="#e5e7eb"
-        strokeWidth="2"
-        strokeDasharray="5,5"
-        opacity="0.5"
-      />
-    </svg>
+    <canvas
+      ref={canvasRef}
+      width={dimensions.width}
+      height={dimensions.height}
+      className="absolute inset-0 pointer-events-none"
+      style={{ zIndex: -1 }}
+    />
   )
 }
 
@@ -350,22 +502,8 @@ export function CenteredGraphPortfolio() {
 
       {/* Graph Container */}
       <div className="relative w-full h-screen">
-        {/* Render connections */}
-        {Object.values(nodes).map(node => {
-          if ('children' in node && node.children) {
-            return node.children.map(childId => {
-              const childNode = nodes[childId as keyof typeof nodes]
-              return (
-                <Connection
-                  key={`${node.id}-${childId}`}
-                  from={node}
-                  to={childNode}
-                />
-              )
-            })
-          }
-          return null
-        })}
+        {/* Render connection lines */}
+        <ConnectionLines />
 
         {/* Render small cards */}
         {Object.values(nodes).map(node => (
