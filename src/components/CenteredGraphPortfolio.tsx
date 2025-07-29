@@ -126,7 +126,32 @@ const nodes = {
   }
 }
 
-type Node = typeof nodes[keyof typeof nodes]
+// Define Node type with all possible content properties
+type NodeContent = {
+  details?: string
+  roles?: string[]
+  social?: Array<{ icon: any; link: string; name: string }>
+  skills?: string[]
+  services?: string[]
+  technologies?: string[]
+  projects?: string[]
+  approach?: string[]
+  specialties?: string[]
+  includes?: string[]
+  types?: string[]
+  focus?: string[]
+}
+
+type Node = {
+  id: string
+  title: string
+  description: string
+  position: { x: number; y: number }
+  icon: any
+  children?: string[]
+  parent?: string
+  content: NodeContent
+}
 
 // Small Card Component
 function SmallCard({ 
