@@ -4,13 +4,20 @@ import { useRef, useState, useCallback, useEffect } from 'react'
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
 import { Canvas } from '@react-three/fiber'
 import { Float, Stars, Cloud } from '@react-three/drei'
-import { LiquidGlassCard } from './LiquidGlassCard'
 import { 
   Code2, Palette, PenTool, Dumbbell, 
   Mail, Github, Linkedin, Twitter,
   Sparkles, Zap, Globe
 } from 'lucide-react'
 import * as THREE from 'three'
+
+// Helper function to convert hex to rgb
+function hexToRgb(hex: string): string {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return result 
+    ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+    : '255, 255, 255'
+}
 
 interface CanvasNode {
   id: string
@@ -231,28 +238,25 @@ function DraggableNode({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: Math.random() * 0.3 }}
     >
-      <LiquidGlassCard
-        contrast="light"
-        roundness={24}
-        padding={1.5}
-        glowColor={node.color}
-        interactive={true}
-        className="shadow-xl hover:shadow-2xl transition-shadow duration-300"
+      <div
+        className="shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-3xl"
         style={{
           width: node.width,
           height: node.height,
           background: 'rgba(255, 255, 255, 0.7)',
           backdropFilter: 'blur(20px) saturate(180%)',
-          border: '1px solid rgba(255, 255, 255, 0.5)'
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          boxShadow: `0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 0 20px rgba(${hexToRgb(node.color || '#6366f1')}, 0.1)`,
         }}
       >
-        <div className="p-6">
+        <div className="p-6 h-full flex flex-col justify-center">
           <h3 className="text-2xl font-bold mb-4 text-center" style={{ color: node.color }}>
             {node.title}
           </h3>
           {node.content}
         </div>
-      </LiquidGlassCard>
+      </div>
     </motion.div>
   )
 }
