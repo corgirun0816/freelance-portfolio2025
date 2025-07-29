@@ -1,5 +1,5 @@
-import { Full3DCanvas } from "@/components/Full3DCanvas"
+import { MinimalPortfolio } from "@/components/MinimalPortfolio"
 
 export default function Home() {
-  return <Full3DCanvas />
+  return <MinimalPortfolio />
 }
