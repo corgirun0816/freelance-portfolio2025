@@ -1,5 +1,5 @@
-import { InfiniteCanvas } from "@/components/InfiniteCanvas"
+import { ModernInfiniteCanvas } from "@/components/ModernInfiniteCanvas"
 
 export default function Home() {
-  return <InfiniteCanvas />
+  return <ModernInfiniteCanvas />
 }
