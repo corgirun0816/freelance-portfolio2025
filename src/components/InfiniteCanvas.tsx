@@ -268,8 +268,8 @@ function DraggableNode({
   const dragX = useMotionValue(node.x)
   const dragY = useMotionValue(node.y)
 
-  const x = useTransform([dragX, panX], ([dx, px]: [number, number]) => dx + px)
-  const y = useTransform([dragY, panY], ([dy, py]: [number, number]) => dy + py)
+  const x = useTransform(() => dragX.get() + panX.get())
+  const y = useTransform(() => dragY.get() + panY.get())
 
   return (
     <motion.div
@@ -353,10 +353,10 @@ function ConnectionLine({
   
   if (!fromNode || !toNode) return null
 
-  const x1 = useTransform(panX, (px: number) => fromNode.x + px)
-  const y1 = useTransform(panY, (py: number) => fromNode.y + py)
-  const x2 = useTransform(panX, (px: number) => toNode.x + px)
-  const y2 = useTransform(panY, (py: number) => toNode.y + py)
+  const x1 = useTransform(() => fromNode.x + panX.get())
+  const y1 = useTransform(() => fromNode.y + panY.get())
+  const x2 = useTransform(() => toNode.x + panX.get())
+  const y2 = useTransform(() => toNode.y + panY.get())
 
   return (
     <motion.svg
