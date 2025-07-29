@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { Button, ButtonProps } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
-interface LiquidGlassButtonProps {
+interface LiquidGlassButtonProps extends ButtonProps {
   children: React.ReactNode
-  className?: string
   contrast?: 'light' | 'dark' | 'light-contrast' | 'dark-contrast'
   roundness?: number
   paddingX?: number
@@ -13,7 +14,6 @@ interface LiquidGlassButtonProps {
   fontSize?: string
   fontWeight?: number
   accentColor?: string
-  onClick?: () => void
 }
 
 export function LiquidGlassButton({ 
@@ -26,7 +26,9 @@ export function LiquidGlassButton({
   fontSize = '1rem',
   fontWeight = 500,
   accentColor = '#a8c0ff',
-  onClick
+  variant = "ghost",
+  size = "default",
+  ...props
 }: LiquidGlassButtonProps) {
   const [isHovering, setIsHovering] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -43,13 +45,8 @@ export function LiquidGlassButton({
     border: `1px solid ${isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)'}`,
     borderRadius: `${roundness}px`,
     padding: `${paddingY * 0.5}rem ${paddingX * 0.5}rem`,
-    color: isDark ? '#fff' : '#000',
     fontSize,
     fontWeight,
-    cursor: 'pointer',
-    position: 'relative' as const,
-    overflow: 'hidden',
-    transition: 'all 0.3s ease',
     boxShadow: isDark 
       ? `0 8px 32px 0 rgba(31, 38, 135, 0.37), inset 0 0 20px rgba(${hexToRgb(accentColor)}, 0.2)` 
       : `0 8px 32px 0 rgba(31, 38, 135, 0.1), inset 0 0 20px rgba(${hexToRgb(accentColor)}, 0.1)`,
@@ -66,52 +63,66 @@ export function LiquidGlassButton({
   }
 
   return (
-    <motion.button
-      ref={buttonRef}
-      className={`liquid-glass-button ${className}`}
-      style={baseStyles}
-      whileHover={hoverStyles}
+    <motion.div
       whileTap={{ scale: 0.98 }}
-      onClick={onClick}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      style={{ display: 'inline-block' }}
     >
-      {/* Liquid effect overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
+      <Button
+        ref={buttonRef}
+        className={cn(
+          "relative overflow-hidden transition-all duration-300",
+          isDark ? "text-white hover:text-white" : "text-black hover:text-black",
+          className
+        )}
         style={{
-          background: `radial-gradient(circle at ${isHovering ? '50% 50%' : '50% 150%'}, rgba(${hexToRgb(accentColor)}, 0.3) 0%, transparent 70%)`,
-          transition: 'all 0.6s ease',
-          filter: 'blur(40px)',
+          ...baseStyles,
+          background: isHovering ? hoverStyles.background : baseStyles.background,
+          transform: isHovering ? hoverStyles.transform : 'none',
+          boxShadow: isHovering ? hoverStyles.boxShadow : baseStyles.boxShadow,
         }}
-      />
-      
-      {/* Shimmer effect */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `linear-gradient(105deg, transparent 40%, rgba(255,255,255,${isDark ? 0.3 : 0.2}) 50%, transparent 60%)`,
-          transform: 'translateX(-100%)',
-        }}
-        animate={isHovering ? {
-          transform: ['translateX(-100%)', 'translateX(100%)'],
-        } : {}}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      />
-      
-      {/* Content */}
-      <span className="relative z-10">{children}</span>
-      
-      {/* SVG Filters for liquid distortion */}
-      <svg className="absolute w-0 h-0">
-        <defs>
-          <filter id="liquid-filter">
-            <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" />
-          </filter>
-        </defs>
-      </svg>
-    </motion.button>
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        variant={variant}
+        size={size}
+        {...props}
+      >
+        {/* Liquid effect overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at ${isHovering ? '50% 50%' : '50% 150%'}, rgba(${hexToRgb(accentColor)}, 0.3) 0%, transparent 70%)`,
+            transition: 'all 0.6s ease',
+            filter: 'blur(40px)',
+          }}
+        />
+        
+        {/* Shimmer effect */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `linear-gradient(105deg, transparent 40%, rgba(255,255,255,${isDark ? 0.3 : 0.2}) 50%, transparent 60%)`,
+            transform: 'translateX(-100%)',
+          }}
+          animate={isHovering ? {
+            transform: ['translateX(-100%)', 'translateX(100%)'],
+          } : {}}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        />
+        
+        {/* Content */}
+        <span className="relative z-10">{children}</span>
+        
+        {/* SVG Filters for liquid distortion */}
+        <svg className="absolute w-0 h-0">
+          <defs>
+            <filter id="liquid-filter">
+              <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" />
+            </filter>
+          </defs>
+        </svg>
+      </Button>
+    </motion.div>
   )
 }
 
