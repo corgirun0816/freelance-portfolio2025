@@ -1,5 +1,5 @@
-import { SpatialGraphPortfolio } from "@/components/SpatialGraphPortfolio"
+import { ExpandedGraphPortfolio } from "@/components/ExpandedGraphPortfolio"
 
 export default function Home() {
-  return <SpatialGraphPortfolio />
+  return <ExpandedGraphPortfolio />
 }
