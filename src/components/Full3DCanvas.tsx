@@ -239,8 +239,11 @@ function Connection3D({ start, end, color = '#e0e7ff' }: any) {
   const tubeRef = useRef<THREE.Mesh>(null)
   
   useFrame((state) => {
-    if (tubeRef.current) {
-      tubeRef.current.material.uniforms.time.value = state.clock.elapsedTime
+    if (tubeRef.current && tubeRef.current.material) {
+      const material = tubeRef.current.material as THREE.ShaderMaterial
+      if (material.uniforms) {
+        material.uniforms.time.value = state.clock.elapsedTime
+      }
     }
   })
 
