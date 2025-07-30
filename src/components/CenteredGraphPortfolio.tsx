@@ -306,6 +306,24 @@ function SmallCard({
   isVisible: boolean
 }) {
   const Icon = node.icon
+  const [isHovered, setIsHovered] = useState(false)
+  
+  // Color coding for different service types
+  const getServiceColor = (nodeId: string) => {
+    if (nodeId.includes('design') || ['ui-design', 'ux-research', 'prototyping'].includes(nodeId)) {
+      return 'bg-purple-50 border-purple-200'
+    }
+    if (nodeId.includes('development') || ['frontend', 'backend', 'mobile', 'database'].includes(nodeId)) {
+      return 'bg-blue-50 border-blue-200'
+    }
+    if (nodeId.includes('seo') || ['keyword-research', 'content-writing', 'seo-optimization', 'analytics'].includes(nodeId)) {
+      return 'bg-green-50 border-green-200'
+    }
+    if (nodeId.includes('training') || ['fitness-assessment', 'training-program', 'nutrition', 'mental-wellness'].includes(nodeId)) {
+      return 'bg-orange-50 border-orange-200'
+    }
+    return 'bg-gray-50 border-gray-200'
+  }
 
   return (
     <motion.div
@@ -314,8 +332,8 @@ function SmallCard({
       style={{
         left: '50%',
         top: '50%',
-        x: node.position.x - (node.id === 'main' ? 96 : 120),
-        y: node.position.y - (node.id === 'main' ? 128 : 60),
+        x: node.position.x - (node.id === 'main' ? 96 : node.children && node.children.length > 0 ? 144 : 112),
+        y: node.position.y - (node.id === 'main' ? 128 : node.children && node.children.length > 0 ? 60 : 40),
       }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ 
@@ -325,6 +343,8 @@ function SmallCard({
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
       onClick={() => onSelect(node.id)}
       whileHover={{ scale: 1.05 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {node.id === 'main' ? (
         <div className="bg-white rounded-xl shadow-lg p-6 w-48 h-64 flex flex-col items-center justify-center text-center">
@@ -341,17 +361,80 @@ function SmallCard({
             ))}
           </div>
         </div>
-      ) : (
-        <div className="bg-white rounded-xl shadow-lg p-4 w-60 h-28 flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-            <Icon className="w-6 h-6 text-gray-700" />
+      ) : node.children && node.children.length > 0 ? (
+        // Main service cards with preview
+        <div className="bg-white rounded-xl shadow-lg p-4 w-72 h-auto min-h-[120px] flex flex-col">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+              <Icon className="w-6 h-6 text-gray-700" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900 text-sm">{node.title}</h3>
+              <p className="text-xs text-gray-600">{node.description}</p>
+            </div>
           </div>
-          <div className="flex-1">
-            <h3 className="font-semibold text-gray-900 text-sm">{node.title}</h3>
-            <p className="text-xs text-gray-600 mt-1">{node.description}</p>
+          <div className="flex flex-wrap gap-1">
+            {node.children.slice(0, 4).map(childId => {
+              const child = nodes[childId as keyof typeof nodes]
+              return (
+                <span key={childId} className="text-xs px-2 py-1 bg-gray-50 rounded-md text-gray-600 border border-gray-200">
+                  {child.title}
+                </span>
+              )
+            })}
+          </div>
+        </div>
+      ) : (
+        // Sub-service cards
+        <div className={`bg-white rounded-xl shadow-md p-3 w-56 h-auto min-h-[80px] border-2 ${getServiceColor(node.id)}`}>
+          <div className="flex items-start gap-2">
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${getServiceColor(node.id)}`}>
+              <Icon className="w-5 h-5 text-gray-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-medium text-gray-900 text-sm">{node.title}</h3>
+              <p className="text-xs text-gray-500 mt-0.5">{node.description}</p>
+              {node.content.services && (
+                <div className="mt-1.5 flex flex-wrap gap-1">
+                  {node.content.services.slice(0, 2).map((service, idx) => (
+                    <span key={idx} className="text-xs text-gray-500">• {service}</span>
+                  ))}
+                </div>
+              )}
+              {node.content.technologies && (
+                <div className="mt-1.5 flex flex-wrap gap-1">
+                  {node.content.technologies.slice(0, 3).map((tech, idx) => (
+                    <span key={idx} className="text-xs px-1.5 py-0.5 bg-gray-100 rounded text-gray-600">{tech}</span>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
+      
+      {/* Hover tooltip for additional info */}
+      <AnimatePresence>
+        {isHovered && !node.children && node.content.details && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute left-1/2 -translate-x-1/2 -bottom-2 translate-y-full z-20 w-64 p-3 bg-gray-900 text-white rounded-lg shadow-xl pointer-events-none"
+          >
+            <p className="text-xs">{node.content.details}</p>
+            {node.content.tools && (
+              <div className="mt-2 flex flex-wrap gap-1">
+                {node.content.tools.map((tool, idx) => (
+                  <span key={idx} className="text-xs px-1.5 py-0.5 bg-gray-800 rounded">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
