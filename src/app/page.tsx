@@ -1,5 +1,5 @@
-import { CenteredGraphPortfolio } from "@/components/CenteredGraphPortfolio"
+import { Spatial3DPortfolio } from "@/components/Spatial3DPortfolio"
 
 export default function Home() {
-  return <CenteredGraphPortfolio />
+  return <Spatial3DPortfolio />
 }
