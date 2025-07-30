@@ -6,7 +6,9 @@ import {
   Code2, Palette, PenTool, Dumbbell,
   Mail, Instagram, Twitter, User,
   Activity, Target, Heart, Brain,
-  X, ArrowLeft
+  X, ArrowLeft, Layout, Brush, Layers,
+  Globe, Server, Database, Smartphone,
+  Search, FileText, TrendingUp, BarChart
 } from 'lucide-react'
 
 // Node structure
@@ -33,6 +35,7 @@ const nodes = {
     description: 'UI/UX Design & Prototyping',
     position: { x: -350, y: -150 },
     icon: Palette,
+    children: ['ui-design', 'ux-research', 'prototyping'],
     content: {
       details: 'Creating beautiful and functional web experiences',
       skills: ['User-centered design', 'Modern UI/UX principles', 'Responsive layouts', 'Figma prototyping'],
@@ -45,6 +48,7 @@ const nodes = {
     description: 'React & Next.js Applications',
     position: { x: 350, y: -150 },
     icon: Code2,
+    children: ['frontend', 'backend', 'mobile', 'database'],
     content: {
       details: 'Building modern web applications with cutting-edge technologies',
       skills: ['React/Next.js', 'TypeScript', 'Node.js', 'Database design'],
@@ -57,6 +61,7 @@ const nodes = {
     description: 'Content Strategy & Creation',
     position: { x: 0, y: -250 },
     icon: PenTool,
+    children: ['keyword-research', 'content-writing', 'seo-optimization', 'analytics'],
     content: {
       details: 'Crafting content that ranks and engages your audience',
       services: ['Blog posts', 'Product descriptions', 'Landing pages', 'Email campaigns'],
@@ -123,6 +128,141 @@ const nodes = {
       details: 'Supporting your mental health for complete wellness',
       focus: ['Stress reduction', 'Sleep optimization', 'Mindfulness practices', 'Goal setting']
     }
+  },
+  // Web Design sub-nodes
+  'ui-design': {
+    id: 'ui-design',
+    title: 'UI Design',
+    description: 'Visual design & branding',
+    position: { x: -500, y: -50 },
+    icon: Layout,
+    parent: 'web-design',
+    content: {
+      details: 'Creating visually appealing interfaces',
+      services: ['Visual design', 'Brand identity', 'Design systems']
+    }
+  },
+  'ux-research': {
+    id: 'ux-research',
+    title: 'UX Research',
+    description: 'User research & testing',
+    position: { x: -350, y: 0 },
+    icon: Brush,
+    parent: 'web-design',
+    content: {
+      details: 'Understanding user needs and behaviors',
+      services: ['User interviews', 'Usability testing', 'A/B testing']
+    }
+  },
+  'prototyping': {
+    id: 'prototyping',
+    title: 'Prototyping',
+    description: 'Interactive prototypes',
+    position: { x: -200, y: -50 },
+    icon: Layers,
+    parent: 'web-design',
+    content: {
+      details: 'Building interactive prototypes',
+      services: ['Figma prototypes', 'Wireframing', 'Interactive demos']
+    }
+  },
+  // Development sub-nodes
+  'frontend': {
+    id: 'frontend',
+    title: 'Frontend',
+    description: 'React & Next.js',
+    position: { x: 200, y: -50 },
+    icon: Globe,
+    parent: 'development',
+    content: {
+      details: 'Modern frontend development',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
+    }
+  },
+  'backend': {
+    id: 'backend',
+    title: 'Backend',
+    description: 'Node.js & APIs',
+    position: { x: 350, y: 0 },
+    icon: Server,
+    parent: 'development',
+    content: {
+      details: 'Scalable backend systems',
+      technologies: ['Node.js', 'Express', 'GraphQL', 'REST']
+    }
+  },
+  'mobile': {
+    id: 'mobile',
+    title: 'Mobile',
+    description: 'React Native',
+    position: { x: 500, y: -50 },
+    icon: Smartphone,
+    parent: 'development',
+    content: {
+      details: 'Cross-platform mobile apps',
+      technologies: ['React Native', 'Expo', 'Mobile optimization']
+    }
+  },
+  'database': {
+    id: 'database',
+    title: 'Database',
+    description: 'Data architecture',
+    position: { x: 350, y: -100 },
+    icon: Database,
+    parent: 'development',
+    content: {
+      details: 'Database design and optimization',
+      technologies: ['PostgreSQL', 'MongoDB', 'Prisma', 'Redis']
+    }
+  },
+  // SEO Writing sub-nodes
+  'keyword-research': {
+    id: 'keyword-research',
+    title: 'Keyword Research',
+    description: 'SEO strategy',
+    position: { x: -150, y: -350 },
+    icon: Search,
+    parent: 'seo-writing',
+    content: {
+      details: 'Finding the right keywords',
+      tools: ['Google Keyword Planner', 'Ahrefs', 'SEMrush']
+    }
+  },
+  'content-writing': {
+    id: 'content-writing',
+    title: 'Content Writing',
+    description: 'Engaging content',
+    position: { x: 0, y: -400 },
+    icon: FileText,
+    parent: 'seo-writing',
+    content: {
+      details: 'Writing content that converts',
+      types: ['Blog posts', 'Landing pages', 'Product descriptions']
+    }
+  },
+  'seo-optimization': {
+    id: 'seo-optimization',
+    title: 'SEO Optimization',
+    description: 'On-page SEO',
+    position: { x: 150, y: -350 },
+    icon: TrendingUp,
+    parent: 'seo-writing',
+    content: {
+      details: 'Optimizing content for search engines',
+      techniques: ['Meta tags', 'Schema markup', 'Internal linking']
+    }
+  },
+  'analytics': {
+    id: 'analytics',
+    title: 'Analytics',
+    description: 'Performance tracking',
+    position: { x: 0, y: -150 },
+    icon: BarChart,
+    parent: 'seo-writing',
+    content: {
+      details: 'Measuring content performance',
+      tools: ['Google Analytics', 'Search Console', 'Custom dashboards']
+    }
   }
 }
 
@@ -140,6 +280,8 @@ type NodeContent = {
   includes?: string[]
   types?: string[]
   focus?: string[]
+  tools?: string[]
+  techniques?: string[]
 }
 
 type Node = {
@@ -172,8 +314,8 @@ function SmallCard({
       style={{
         left: '50%',
         top: '50%',
-        x: node.position.x - 120,
-        y: node.position.y - 60,
+        x: node.position.x - (node.id === 'main' ? 96 : 120),
+        y: node.position.y - (node.id === 'main' ? 128 : 60),
       }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ 
@@ -184,15 +326,32 @@ function SmallCard({
       onClick={() => onSelect(node.id)}
       whileHover={{ scale: 1.05 }}
     >
-      <div className="bg-white rounded-xl shadow-lg p-4 w-60 h-28 flex items-center gap-3">
-        <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-          <Icon className="w-6 h-6 text-gray-700" />
+      {node.id === 'main' ? (
+        <div className="bg-white rounded-xl shadow-lg p-6 w-48 h-64 flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+            <Icon className="w-8 h-8 text-gray-700" />
+          </div>
+          <h3 className="font-bold text-gray-900 text-lg mb-2">{node.title}</h3>
+          <p className="text-xs text-gray-600 mb-4">{node.description}</p>
+          <div className="flex flex-wrap gap-1 justify-center">
+            {node.content.roles && node.content.roles.map((role, index) => (
+              <span key={index} className="text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-700">
+                {role}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="flex-1">
-          <h3 className="font-semibold text-gray-900 text-sm">{node.title}</h3>
-          <p className="text-xs text-gray-600 mt-1">{node.description}</p>
+      ) : (
+        <div className="bg-white rounded-xl shadow-lg p-4 w-60 h-28 flex items-center gap-3">
+          <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+            <Icon className="w-6 h-6 text-gray-700" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-gray-900 text-sm">{node.title}</h3>
+            <p className="text-xs text-gray-600 mt-1">{node.description}</p>
+          </div>
         </div>
-      </div>
+      )}
     </motion.div>
   )
 }
@@ -470,10 +629,10 @@ function ConnectionLines() {
     ctx.clearRect(0, 0, dimensions.width, dimensions.height)
 
     // Set line style
-    ctx.strokeStyle = '#d1d5db'
-    ctx.lineWidth = 2
-    ctx.setLineDash([5, 5])
-    ctx.globalAlpha = 0.6
+    ctx.strokeStyle = '#9ca3af'
+    ctx.lineWidth = 3
+    ctx.setLineDash([8, 4])
+    ctx.globalAlpha = 0.8
 
     // Center position
     const centerX = dimensions.width / 2
